@@ -17,7 +17,7 @@ export default function Index() {
           className="relative flex items-center justify-center min-h-[60vh] bg-cover bg-center"
           style={{ backgroundImage: `url(${heroFarm})` }}
         >
-          <div className="absolute inset-0 bg-foreground/40" />
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-background/5 to-transparent" /> */}
           <ApiKeyModal onSaved={checkKey} />
         </div>
       </Layout>
