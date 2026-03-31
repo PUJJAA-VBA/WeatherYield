@@ -3,10 +3,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import Layout from "@/components/Layout";
 import { useWeather } from "@/hooks/useWeather";
+import heroFarm from "@/assets/hero-farm1.jpg";
 
 export default function Graphs() {
   const { forecast, loading } = useWeather();
-
   const data = forecast.map((d) => ({
     day: d.day,
     "Max Temp": Math.round(d.temp_max),
@@ -28,25 +28,33 @@ export default function Graphs() {
   }
 
   return (
-    <Layout>
-      <div className="container mx-auto px-4 py-8 space-y-8">
-        <div>
-          <h1 className="text-3xl font-heading font-extrabold text-foreground">📊 Weather Analytics</h1>
-          <p className="text-muted-foreground mt-1">7-day visual weather trends for agricultural planning</p>
+  <Layout>
+    <div
+  className="relative min-h-screen bg-cover bg-center"
+  style={{ backgroundImage: `url(${heroFarm})` }}
+>
+  {/* Overlay (LIGHT blur + gradient) */}
+  <div className="absolute inset-0 bg-white/30 backdrop-blur-[2px]" />
+
+  {/* CONTENT */}
+  <div className="relative container mx-auto px-6 py-8 space-y-8">
+    <div>
+          <h1 className="text-black/100 text-3xl font-heading font-extrabold text-primary">📊 Weather Analytics</h1>
+          <p className="text-black/100 text-muted-primary mt-1">7-day visual weather trends for agricultural planning</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Temperature Chart */}
-          <Card className="bg-card border shadow-md">
+          <Card className="bg-white/50 backdrop-blur-md border border-white/20 shadow-lg">
             <CardHeader>
               <CardTitle className="font-heading text-lg flex items-center gap-2">🌡️ Temperature Trend</CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={280}>
                 <LineChart data={data}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                  <XAxis dataKey="day" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                  <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} unit="°C" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#000000" />
+                  <XAxis dataKey="day" stroke="#000000" fontSize={12} />
+                  <YAxis stroke="#000000" fontSize={12} unit="°C" />
                   <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 12 }} />
                   <Legend />
                   <Line type="monotone" dataKey="Max Temp" stroke="hsl(var(--chart-orange))" strokeWidth={3} dot={{ r: 4 }} />
@@ -57,16 +65,16 @@ export default function Graphs() {
           </Card>
 
           {/* Humidity Chart */}
-          <Card className="bg-card border shadow-md">
+          <Card className="bg-white/50 backdrop-blur-md border border-white/20 shadow-lg">
             <CardHeader>
               <CardTitle className="font-heading text-lg flex items-center gap-2">💧 Humidity Levels</CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={280}>
                 <AreaChart data={data}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                  <XAxis dataKey="day" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                  <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} unit="%" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#000000" />
+                  <XAxis dataKey="day" stroke="#000000" fontSize={12} />
+                  <YAxis stroke="#000000" fontSize={12} unit="%" />
                   <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 12 }} />
                   <Area type="monotone" dataKey="Humidity" stroke="hsl(var(--chart-blue))" fill="hsl(var(--chart-blue) / 0.2)" strokeWidth={2} />
                 </AreaChart>
@@ -75,16 +83,16 @@ export default function Graphs() {
           </Card>
 
           {/* Rainfall Chart */}
-          <Card className="bg-card border shadow-md">
+          <Card className="bg-white/50 backdrop-blur-md border border-white/20 shadow-lg">
             <CardHeader>
               <CardTitle className="font-heading text-lg flex items-center gap-2">🌧️ Rainfall Distribution</CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={280}>
                 <BarChart data={data}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                  <XAxis dataKey="day" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                  <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} unit="mm" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#000000" />
+                  <XAxis dataKey="day" stroke="#000000" fontSize={12} />
+                  <YAxis stroke="#000000" fontSize={12} unit="mm" />
                   <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 12 }} />
                   <Bar dataKey="Rainfall" fill="hsl(var(--chart-blue))" radius={[6, 6, 0, 0]} />
                 </BarChart>
@@ -93,16 +101,16 @@ export default function Graphs() {
           </Card>
 
           {/* Wind Speed Chart */}
-          <Card className="bg-card border shadow-md">
+          <Card className="bg-white/50 backdrop-blur-md border border-white/20 shadow-lg">
             <CardHeader>
               <CardTitle className="font-heading text-lg flex items-center gap-2">💨 Wind Speed</CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={280}>
                 <LineChart data={data}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                  <XAxis dataKey="day" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                  <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} unit="m/s" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#000000" />
+                  <XAxis dataKey="day" stroke="#000000" fontSize={12} />
+                  <YAxis stroke="#000000" fontSize={12} unit="m/s" />
                   <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 12 }} />
                   <Line type="monotone" dataKey="Wind Speed" stroke="hsl(var(--chart-green))" strokeWidth={3} dot={{ r: 4 }} />
                 </LineChart>
@@ -110,6 +118,7 @@ export default function Graphs() {
             </CardContent>
           </Card>
         </div>
+      </div>
       </div>
     </Layout>
   );
