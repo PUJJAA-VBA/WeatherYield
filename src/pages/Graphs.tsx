@@ -39,7 +39,7 @@ export default function Graphs() {
   {/* CONTENT */}
   <div className="relative container mx-auto px-6 py-8 space-y-8">
     <div>
-          <h1 className="text-black/70 text-3xl font-heading font-extrabold text-primary">📊 Weather Analytics</h1>
+          <h1 className="text-black/70 text-3xl font-heading font-extrabold text-foreground">📊 Weather Analytics</h1>
           <p className="text-black/100 text-muted-primary mt-1">7-day visual weather trends for agricultural planning</p>
         </div>
 
