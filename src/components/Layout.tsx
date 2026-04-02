@@ -31,7 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="WeatherYield" width={40} height={40} className="rounded-lg" />
             <span className="text-xl font-heading font-bold text-primary-foreground tracking-tight">
-              WeatherYield
+              AgriSense
             </span>
           </Link>
           <nav className="flex items-center gap-1">
@@ -56,7 +56,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <footer className="border-t border-white/20 bg-green-900/80 backdrop-blur-md py-4 text-center text-sm text-white">
         <div className="container mx-auto px-4 flex items-center justify-center gap-2">
           <Cloud className="w-4 h-4" />
-          <span>WeatherYield - Smart Farming with XGBoost-powered Insights</span>
+          <span>AgriSense: A Next-Gen Weather-Driven Agricultural Intelligence System</span>
         </div>
       </footer>
     </div>
