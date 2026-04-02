@@ -7,6 +7,8 @@ import Index from "./pages/Index";
 import Graphs from "./pages/Graphs";
 import Recommendations from "./pages/Recommendations";
 import NotFound from "./pages/NotFound";
+import Fertilizers from "./pages/Fertilizers";
+
 
 const queryClient = new QueryClient();
 
@@ -21,6 +23,7 @@ const App = () => (
           <Route path="/graphs" element={<Graphs />} />
           <Route path="/recommendations" element={<Recommendations />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/fertilizers" element={<Fertilizers />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

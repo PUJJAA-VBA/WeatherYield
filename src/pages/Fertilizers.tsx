@@ -1,0 +1,315 @@
+import { useState } from "react";
+import Layout from "@/components/Layout";
+import { Card, CardContent } from "@/components/ui/card";
+import { Sprout } from "lucide-react";
+import heroFarm from "@/assets/hero-farm3.jpg";
+
+export default function Fertilizers() {
+  const fertilizerData = [
+  { crop: "Rice", category: "Grains", fertilizer: "Urea", amount: "50 kg/acre", timing: "20–25 days", purpose: "Boosts leaf growth" },
+  { crop: "Wheat", category: "Grains", fertilizer: "DAP", amount: "40 kg/acre", timing: "Before sowing", purpose: "Root development" },
+  { crop: "Maize", category: "Grains", fertilizer: "NPK", amount: "60 kg/acre", timing: "Sowing + 30 days", purpose: "Balanced growth" },
+
+  { crop: "Mango", category: "Fruits", fertilizer: "Organic + NPK", amount: "50 kg/tree", timing: "Before flowering", purpose: "Better fruiting" },
+  { crop: "Banana", category: "Fruits", fertilizer: "NPK 19:19:19", amount: "60 kg/acre", timing: "Monthly", purpose: "Fruit development" },
+  { crop: "Apple", category: "Fruits", fertilizer: "NPK + Compost", amount: "40 kg/tree", timing: "Spring", purpose: "Improves fruit quality" },
+
+  { crop: "Tomato", category: "Vegetables", fertilizer: "Calcium Nitrate", amount: "25 kg/acre", timing: "Flowering", purpose: "Fruit quality" },
+  { crop: "Potato", category: "Vegetables", fertilizer: "Potassium Sulphate", amount: "40 kg/acre", timing: "Tuber stage", purpose: "Tuber size" },
+
+  { crop: "Cotton", category: "Cash Crops", fertilizer: "NPK 17:17:17", amount: "50 kg/acre", timing: "Flowering", purpose: "Boll formation" },
+  { crop: "Sugarcane", category: "Cash Crops", fertilizer: "Urea + Potash", amount: "75 kg/acre", timing: "30–45 days", purpose: "Sugar content" },
+
+  { crop: "Tea", category: "Plantation", fertilizer: "Ammonium Sulphate", amount: "35 kg/acre", timing: "Regular", purpose: "Leaf production" },
+  { crop: "Coffee", category: "Plantation", fertilizer: "NPK + Compost", amount: "40 kg/acre", timing: "Pre-monsoon", purpose: "Bean yield" },
+
+  { crop: "Barley", category: "Grains", fertilizer: "Urea", amount: "45 kg/acre", timing: "Early stage", purpose: "Improves yield" },
+  { crop: "Millet", category: "Grains", fertilizer: "NPK", amount: "35 kg/acre", timing: "At sowing", purpose: "Growth boost" },
+  { crop: "Sorghum", category: "Grains", fertilizer: "Urea", amount: "50 kg/acre", timing: "25 days", purpose: "Plant strength" },
+
+  { crop: "Orange", category: "Fruits", fertilizer: "NPK", amount: "45 kg/tree", timing: "Before flowering", purpose: "Fruit quality" },
+  { crop: "Papaya", category: "Fruits", fertilizer: "NPK", amount: "40 kg/acre", timing: "Monthly", purpose: "Fruit growth" },
+  { crop: "Pineapple", category: "Fruits", fertilizer: "Potash", amount: "30 kg/acre", timing: "Fruit stage", purpose: "Sweetness" },
+
+  { crop: "Onion", category: "Vegetables", fertilizer: "DAP + Urea", amount: "30 kg/acre", timing: "Bulb stage", purpose: "Bulb size" },
+  { crop: "Garlic", category: "Vegetables", fertilizer: "NPK", amount: "25 kg/acre", timing: "Early stage", purpose: "Growth" },
+  { crop: "Carrot", category: "Vegetables", fertilizer: "Potash", amount: "20 kg/acre", timing: "Root stage", purpose: "Root size" },
+  { crop: "Spinach", category: "Vegetables", fertilizer: "Urea", amount: "15 kg/acre", timing: "Early stage", purpose: "Leaf growth" },
+
+  { crop: "Groundnut", category: "Oil Seeds", fertilizer: "Gypsum", amount: "200 kg/acre", timing: "Flowering", purpose: "Pod formation" },
+  { crop: "Soybean", category: "Oil Seeds", fertilizer: "Rhizobium", amount: "30 kg/acre", timing: "Before sowing", purpose: "Nitrogen fixation" },
+  { crop: "Sunflower", category: "Oil Seeds", fertilizer: "NPK", amount: "40 kg/acre", timing: "Early stage", purpose: "Oil yield" },
+
+  { crop: "Turmeric", category: "Spices", fertilizer: "Organic + NPK", amount: "50 kg/acre", timing: "After sprouting", purpose: "Rhizome growth" },
+  { crop: "Ginger", category: "Spices", fertilizer: "Compost", amount: "45 kg/acre", timing: "Early stage", purpose: "Root growth" },
+  { crop: "Chili", category: "Spices", fertilizer: "Urea + DAP", amount: "30 kg/acre", timing: "Vegetative", purpose: "Yield boost" }
+];
+
+  const [showCategoriesOnly, setShowCategoriesOnly] = useState(false);
+  const categories = [...new Set(fertilizerData.map(item => item.category))];
+  const [cropInput, setCropInput] = useState("");
+  const [result, setResult] = useState<any>(null);
+  const [categoryInput, setCategoryInput] = useState("");
+  const [categoryResults, setCategoryResults] = useState<any[]>([]);
+  const [suggestions, setSuggestions] = useState<any[]>([]);
+
+  const handleSearch = () => {
+  const value = cropInput.trim().toLowerCase();
+  setSuggestions([]);
+
+  // if user types "category"
+  if (
+  value.includes("cat") ||
+  value.includes("categ") ||
+  value.includes("category") ||
+  value.includes("categories")
+) {
+  setShowCategoriesOnly(true);
+  setResult(null);
+  setCategoryResults([]);
+  return;
+}
+
+  const cropMatch = fertilizerData.find(
+    (c) => c.crop.toLowerCase() === value
+  );
+
+  if (cropMatch) {
+    setResult(cropMatch);
+    setCategoryResults([]);
+    return;
+  }
+
+  const categoryMatch = fertilizerData.filter(
+    (c) => c.category.toLowerCase() === value
+  );
+
+  if (categoryMatch.length > 0) {
+    setCategoryResults(categoryMatch);
+    setResult(null);
+  } else {
+    setResult(null);
+    setCategoryResults([]);
+  }
+};
+
+  return (
+    <Layout>
+      <div
+  className="relative min-h-screen bg-cover bg-center"
+  style={{ backgroundImage: `url(${heroFarm})` }}
+>
+  {/* Overlay (LIGHT blur + gradient) */}
+  <div className="absolute inset-0 bg-white/30 backdrop-blur-[2px]" />
+
+  {/* CONTENT */}
+  <div className="relative container mx-auto px-6 py-8 space-y-8">
+
+        {/* Title */}
+        <div>
+          <h1 className="text-black/90 text-3xl font-heading font-extrabold text-primary">
+            🌱 Fertilizer Recommendation
+          </h1>
+          <p className="text-black/90 text-muted-primary mt-1">
+            Get fertilizer suggestions based on your crop
+          </p>
+        </div>
+
+        {/* Input Section */}
+
+        <div className="flex flex-col sm:flex-row gap-3">
+  <input
+    type="text"
+    placeholder="Enter crop or category (e.g., Rice, Fruits...)"
+    value={cropInput}
+    onChange={(e) => {
+  const value = e.target.value.toLowerCase();
+  setShowCategoriesOnly(false);
+  setCropInput(value);
+
+  if (value.length > 0) {
+    // crop suggestions
+    const cropMatches = fertilizerData.filter((c) =>
+      c.crop.toLowerCase().includes(value)
+    );
+
+    // category suggestions
+    const categoryMatches = categories
+      .filter((cat) => cat.toLowerCase().includes(value))
+      .map((cat) => ({ crop: cat, isCategory: true }));
+
+    // special case: user types "category" or "categories"
+    if (value.includes("category")) {
+      const allCategories = categories.map((cat) => ({
+        crop: cat,
+        isCategory: true
+      }));
+      setSuggestions(allCategories);
+      return;
+    }
+
+    // merge both
+    const combined = [...categoryMatches, ...cropMatches].slice(0, 10);
+
+    setSuggestions(combined);
+  } else {
+    setSuggestions([]);
+  }
+
+  setResult(null);
+  setCategoryResults([]);
+}}
+    className="bg-white/80 backdrop-blur-md border border-white/20 shadow-lg flex-1 p-3 rounded-lg outline-none"
+  />
+
+  <button
+    onClick={handleSearch}
+    className="px-5 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition"
+  >
+    Search
+  </button>
+</div>
+
+{cropInput.length === 0 && (
+  <p className="text-black/90 text-medium mt-1 text-primary">
+    💡 You can search by <b>crop</b> or <b>category</b> (e.g., Fruits, Grains)
+  </p>
+)}
+        
+        
+
+        {suggestions.length > 0 && !result && categoryResults.length === 0 && !showCategoriesOnly && (
+            <div className="bg-white/80 backdrop-blur-md border border-white/20 shadow-lg rounded-lg mt-2 overflow-hidden">
+                {suggestions.map((item) => (
+                <div
+                    key={item.crop}
+                    onClick={() => {
+  setSuggestions([]);
+
+  // If it's a category
+  if (item.isCategory) {
+    const filtered = fertilizerData.filter(
+      (c) => c.category === item.crop
+    );
+    setCategoryResults(filtered);
+    setResult(null);
+    setCropInput(item.crop);
+  } else {
+    setCropInput(item.crop);
+    setResult(item);
+    setCategoryResults([]);
+  }
+}}
+                    className="px-4 py-2 cursor-pointer hover:bg-green-100 transition"
+                >
+                    {item.isCategory ? "📂 " : "🌾 "} {item.crop}
+                </div>
+                ))}
+            </div>
+            )}
+
+        {showCategoriesOnly && (
+  <div className="bg-white/80 backdrop-blur-md border border-white/20 shadow-lg rounded-lg p-4">
+    <h2 className="text-lg font-bold mb-2">📂 Available Categories</h2>
+
+    {categories.map((cat) => (
+      <div
+        key={cat}
+        onClick={() => {
+          const filtered = fertilizerData.filter(
+            (item) => item.category === cat
+          );
+          setCategoryResults(filtered);
+          setShowCategoriesOnly(false);
+          setCropInput(cat);
+        }}
+        className="cursor-pointer px-3 py-2 rounded hover:bg-green-100"
+      >
+        📂 {cat}
+      </div>
+    ))}
+  </div>
+)}
+
+        {/* Result Section */}
+        {result ? (
+  <Card className="bg-white/50 backdrop-blur-md border border-white/20 shadow-lg">
+    <CardContent className="p-6 space-y-2">
+      <h2 className="text-xl font-bold flex items-center gap-2">
+        🌾 {result.crop}
+      </h2>
+
+      <p>🧪 <b>Fertilizer:</b> {result.fertilizer}</p>
+      <p>📦 <b>Amount:</b> {result.amount}</p>
+      <p>⏰ <b>When to Use:</b> {result.timing}</p>
+      <p>🌱 <b>Purpose:</b> {result.purpose}</p>
+    </CardContent>
+  </Card>
+) : cropInput &&
+    categoryResults.length === 0 &&
+    suggestions.length === 0 &&
+    !showCategoriesOnly && (
+  <p className="text-black font-semibold">
+    ❌ No data found. Try another crop 🌾
+  </p>
+)}
+
+        {categoryResults.length > 0 && (
+  <div>
+    <h2 className="text-black text-xl font-bold mt-6">
+  📂 Showing results for "{cropInput}"
+</h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+      {categoryResults.map((item) => (
+        <Card key={item.crop} className="bg-white/50 backdrop-blur-md border border-white/20 shadow-lg">
+          <CardContent className="p-4 space-y-1">
+            <h3 className="font-bold text-lg">🌾 {item.crop}</h3>
+            <p>🧪 {item.fertilizer}</p>
+            <p>📦 {item.amount}</p>
+            <p>⏰ {item.timing}</p>
+            <p className="text-sm">🌱 {item.purpose}</p>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+)}
+
+        {/* All Crops Section */}
+        {!result && categoryResults.length === 0 && !showCategoriesOnly && (
+        <div>
+          <h2 className="text-black/80 text-2xl font-heading font-bold text-primary mb-4 flex items-center gap-2">
+            {/* <Sprout className="text-white w-5 h-5 text-primary" /> */}
+            🌱 Some Common Crops Fertilizer Guide
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {fertilizerData
+                .filter((item) => item.crop !== result?.crop)
+                .slice(0, 9)
+                .map((item) => (
+              <Card key={item.crop} className="bg-white/50 backdrop-blur-md border border-white/20 shadow-lg">
+                <CardContent className="p-4 space-y-1">
+                  <h3 className="font-bold text-lg flex items-center gap-2">
+                  🌾 {item.crop}
+                  </h3>
+
+                  <p>🧪 <b>{item.fertilizer}</b></p>
+                  <p className="text-sm">📦 {item.amount}</p>
+                  <p className="text-sm">⏰ {item.timing}</p>
+                  <p className="text-xs text-muted-foreground">🌱 {item.purpose}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+        )}
+
+      </div>
+      </div>
+    </Layout>
+  );
+
+}
+

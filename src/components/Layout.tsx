@@ -2,11 +2,13 @@ import { Link, useLocation } from "react-router-dom";
 import { Cloud, BarChart3, Sprout, Home } from "lucide-react";
 import logo from "@/assets/logo.png";
 import heroFarm from "@/assets/hero-farm.jpg";
+import { FlaskConical } from "lucide-react";
 
 const navItems = [
   { path: "/", label: "Dashboard", icon: Home },
   { path: "/graphs", label: "Analytics", icon: BarChart3 },
   { path: "/recommendations", label: "Crop Planner", icon: Sprout },
+  { path: "/fertilizers", label: "Fertilizers", icon: FlaskConical },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {

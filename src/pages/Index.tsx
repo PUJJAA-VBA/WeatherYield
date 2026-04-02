@@ -52,7 +52,7 @@ export default function Index() {
               🌾 Weather Dashboard
             </h1>
 
-            <p className="text-white/100 text-sm text-white/90 mt-1">
+            <p className="text-white/150 text-sm text-white/90 mt-1">
               Real-time weather insights for smarter farming
             </p>
 
