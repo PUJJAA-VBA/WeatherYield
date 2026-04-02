@@ -42,7 +42,44 @@ export default function Fertilizers() {
 
   { crop: "Turmeric", category: "Spices", fertilizer: "Organic + NPK", amount: "50 kg/acre", timing: "After sprouting", purpose: "Rhizome growth" },
   { crop: "Ginger", category: "Spices", fertilizer: "Compost", amount: "45 kg/acre", timing: "Early stage", purpose: "Root growth" },
-  { crop: "Chili", category: "Spices", fertilizer: "Urea + DAP", amount: "30 kg/acre", timing: "Vegetative", purpose: "Yield boost" }
+  { crop: "Chili", category: "Spices", fertilizer: "Urea + DAP", amount: "30 kg/acre", timing: "Vegetative", purpose: "Yield boost" },
+  { crop: "Peanut", category: "Oil Seeds", fertilizer: "Gypsum", amount: "150 kg/acre", timing: "Flowering", purpose: "Pod filling" },
+{ crop: "Mustard", category: "Oil Seeds", fertilizer: "NPK", amount: "35 kg/acre", timing: "Early stage", purpose: "Oil yield" },
+{ crop: "Sesame", category: "Oil Seeds", fertilizer: "Urea", amount: "25 kg/acre", timing: "15 days", purpose: "Growth boost" },
+
+{ crop: "Cabbage", category: "Vegetables", fertilizer: "NPK", amount: "40 kg/acre", timing: "Early stage", purpose: "Head formation" },
+{ crop: "Cauliflower", category: "Vegetables", fertilizer: "Urea + Potash", amount: "35 kg/acre", timing: "Mid stage", purpose: "Curd quality" },
+{ crop: "Brinjal", category: "Vegetables", fertilizer: "DAP", amount: "30 kg/acre", timing: "Before flowering", purpose: "Fruit set" },
+{ crop: "Capsicum", category: "Vegetables", fertilizer: "NPK", amount: "28 kg/acre", timing: "Vegetative", purpose: "Yield increase" },
+{ crop: "Pumpkin", category: "Vegetables", fertilizer: "Compost", amount: "50 kg/acre", timing: "Early stage", purpose: "Soil fertility" },
+{ crop: "Cucumber", category: "Vegetables", fertilizer: "NPK", amount: "30 kg/acre", timing: "Flowering", purpose: "Fruit growth" },
+
+{ crop: "Guava", category: "Fruits", fertilizer: "NPK", amount: "45 kg/tree", timing: "Before flowering", purpose: "Fruit yield" },
+{ crop: "Pomegranate", category: "Fruits", fertilizer: "Organic + NPK", amount: "50 kg/tree", timing: "Flowering", purpose: "Fruit quality" },
+{ crop: "Watermelon", category: "Fruits", fertilizer: "Potash", amount: "35 kg/acre", timing: "Fruit stage", purpose: "Sweetness" },
+{ crop: "Muskmelon", category: "Fruits", fertilizer: "NPK", amount: "30 kg/acre", timing: "Early stage", purpose: "Growth" },
+{ crop: "Sapota", category: "Fruits", fertilizer: "Compost", amount: "40 kg/tree", timing: "Yearly", purpose: "Tree health" },
+
+{ crop: "Jute", category: "Cash Crops", fertilizer: "Urea", amount: "50 kg/acre", timing: "20 days", purpose: "Fiber quality" },
+{ crop: "Tobacco", category: "Cash Crops", fertilizer: "NPK", amount: "45 kg/acre", timing: "Early stage", purpose: "Leaf quality" },
+
+{ crop: "Rubber", category: "Plantation", fertilizer: "NPK", amount: "60 kg/acre", timing: "Yearly", purpose: "Latex yield" },
+{ crop: "Coconut", category: "Plantation", fertilizer: "Urea + Potash", amount: "50 kg/tree", timing: "Twice yearly", purpose: "Nut production" },
+{ crop: "Arecanut", category: "Plantation", fertilizer: "NPK", amount: "40 kg/acre", timing: "Pre-monsoon", purpose: "Nut yield" },
+
+{ crop: "Black Pepper", category: "Spices", fertilizer: "Compost", amount: "30 kg/acre", timing: "Early stage", purpose: "Growth" },
+{ crop: "Cardamom", category: "Spices", fertilizer: "NPK", amount: "35 kg/acre", timing: "Mid season", purpose: "Yield boost" },
+{ crop: "Clove", category: "Spices", fertilizer: "Organic", amount: "25 kg/tree", timing: "Yearly", purpose: "Tree health" },
+{ crop: "Coriander", category: "Spices", fertilizer: "Urea", amount: "20 kg/acre", timing: "Early stage", purpose: "Leaf growth" },
+{ crop: "Cumin", category: "Spices", fertilizer: "DAP", amount: "25 kg/acre", timing: "Before sowing", purpose: "Root growth" },
+
+{ crop: "Horse Gram", category: "Pulses", fertilizer: "Rhizobium", amount: "20 kg/acre", timing: "Before sowing", purpose: "Nitrogen fixation" },
+{ crop: "Green Gram", category: "Pulses", fertilizer: "NPK", amount: "25 kg/acre", timing: "Early stage", purpose: "Yield boost" },
+{ crop: "Black Gram", category: "Pulses", fertilizer: "DAP", amount: "30 kg/acre", timing: "Before sowing", purpose: "Root growth" },
+{ crop: "Red Gram", category: "Pulses", fertilizer: "Urea", amount: "35 kg/acre", timing: "20 days", purpose: "Plant growth" },
+
+{ crop: "Almond", category: "Fruits", fertilizer: "NPK", amount: "45 kg/tree", timing: "Spring", purpose: "Nut quality" },
+{ crop: "Cashew", category: "Plantation", fertilizer: "Organic + NPK", amount: "50 kg/tree", timing: "Before flowering", purpose: "Nut yield" }
 ];
 
   const [showCategoriesOnly, setShowCategoriesOnly] = useState(false);
