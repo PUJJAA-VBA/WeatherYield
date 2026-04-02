@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
-import { Sprout } from "lucide-react";
+// import { Sprout } from "lucide-react";
 import heroFarm from "@/assets/hero-farm3.jpg";
 
 export default function Fertilizers() {
