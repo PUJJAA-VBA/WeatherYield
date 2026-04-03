@@ -1,3 +1,4 @@
+import { X } from "lucide-react";
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
@@ -250,9 +251,9 @@ export default function Fertilizers() {
           setCategoryResults([]);
           setShowCategoriesOnly(false);
         }}
-        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-black"
+        className="absolute right-3 top-1/2 -translate-y-1/2 text-black hover:text-red-500"
       >
-        ❌
+         <X size={20} />
       </button>
     )}
   </div>
