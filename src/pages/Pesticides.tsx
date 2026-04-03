@@ -96,29 +96,298 @@ export default function Pesticides() {
       amount: "2 kg/acre",
       timing: "Before spread",
       purpose: "Fungal control"
-    }
+    },
+    {
+  disease: "Aphid Attack",
+  crops: ["Cotton", "Chili", "Mustard"],
+  symptoms: "Sticky leaves, insects on stems",
+  severity: "Medium",
+  pesticide: "Imidacloprid",
+  amount: "0.5 L/acre",
+  timing: "Early infestation",
+  purpose: "Kills sucking pests"
+},
+{
+  disease: "Stem Borer",
+  crops: ["Rice", "Maize"],
+  symptoms: "Dead heart in plants",
+  severity: "High",
+  pesticide: "Chlorpyrifos",
+  amount: "1 L/acre",
+  timing: "Early stage",
+  purpose: "Controls larvae"
+},
+{
+  disease: "Leaf Curl",
+  crops: ["Chili", "Tomato"],
+  symptoms: "Curled leaves",
+  severity: "Medium",
+  pesticide: "Thiamethoxam",
+  amount: "0.4 g/L",
+  timing: "Initial stage",
+  purpose: "Virus control"
+},
+{
+  disease: "Fruit Borer",
+  crops: ["Tomato", "Brinjal"],
+  symptoms: "Holes in fruits",
+  severity: "High",
+  pesticide: "Spinosad",
+  amount: "0.3 ml/L",
+  timing: "Fruit stage",
+  purpose: "Protects fruits"
+},
+{
+  disease: "Whitefly",
+  crops: ["Cotton", "Tomato"],
+  symptoms: "White insects under leaves",
+  severity: "High",
+  pesticide: "Acetamiprid",
+  amount: "0.5 g/L",
+  timing: "Early stage",
+  purpose: "Controls sap sucking pests"
+},
+{
+  disease: "Thrips",
+  crops: ["Onion", "Chili"],
+  symptoms: "Silvery streaks",
+  severity: "Medium",
+  pesticide: "Fipronil",
+  amount: "1 ml/L",
+  timing: "Early stage",
+  purpose: "Insect control"
+},
+{
+  disease: "Mealybugs",
+  crops: ["Grapes", "Mango"],
+  symptoms: "White cotton-like insects",
+  severity: "Medium",
+  pesticide: "Neem Oil",
+  amount: "2 ml/L",
+  timing: "Early stage",
+  purpose: "Eco pest control"
+},
+{
+  disease: "Scab",
+  crops: ["Apple", "Potato"],
+  symptoms: "Rough lesions",
+  severity: "Medium",
+  pesticide: "Captan",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Blast",
+  crops: ["Rice"],
+  symptoms: "Diamond-shaped spots",
+  severity: "High",
+  pesticide: "Tricyclazole",
+  amount: "0.6 g/L",
+  timing: "Tillering stage",
+  purpose: "Stops spread"
+},
+{
+  disease: "Smut",
+  crops: ["Maize", "Wheat"],
+  symptoms: "Black powder spores",
+  severity: "Medium",
+  pesticide: "Carboxin",
+  amount: "2 g/kg seed",
+  timing: "Before sowing",
+  purpose: "Seed treatment"
+},
+{
+  disease: "Early Blight",
+  crops: ["Tomato", "Potato"],
+  symptoms: "Target-like spots",
+  severity: "Medium",
+  pesticide: "Mancozeb",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Late Blight",
+  crops: ["Potato", "Tomato"],
+  symptoms: "Water-soaked lesions",
+  severity: "High",
+  pesticide: "Metalaxyl",
+  amount: "2 g/L",
+  timing: "Humid conditions",
+  purpose: "Stops spread"
+},
+{
+  disease: "Gall Midge",
+  crops: ["Rice"],
+  symptoms: "Silver shoot",
+  severity: "High",
+  pesticide: "Carbofuran",
+  amount: "1 kg/acre",
+  timing: "Early stage",
+  purpose: "Larvae control"
+},
+{
+  disease: "Red Spider Mite",
+  crops: ["Tea", "Cotton"],
+  symptoms: "Yellowing leaves",
+  severity: "Medium",
+  pesticide: "Dicofol",
+  amount: "2 ml/L",
+  timing: "Dry weather",
+  purpose: "Mite control"
+},
+{
+  disease: "Canker",
+  crops: ["Citrus"],
+  symptoms: "Lesions on stems",
+  severity: "High",
+  pesticide: "Copper fungicide",
+  amount: "3 g/L",
+  timing: "Early stage",
+  purpose: "Bacterial control"
+},
+{
+  disease: "Leaf Miner",
+  crops: ["Tomato", "Beans"],
+  symptoms: "Zig-zag lines on leaves",
+  severity: "Medium",
+  pesticide: "Abamectin",
+  amount: "0.5 ml/L",
+  timing: "Early stage"
+},
+{
+  disease: "Cutworm",
+  crops: ["Corn", "Vegetables"],
+  symptoms: "Cut seedlings at base",
+  severity: "High",
+  pesticide: "Cypermethrin",
+  amount: "1 ml/L",
+  timing: "Night time control"
+},
+{
+  disease: "Armyworm",
+  crops: ["Maize", "Rice"],
+  symptoms: "Leaves eaten rapidly",
+  severity: "High",
+  pesticide: "Chlorantraniliprole",
+  amount: "0.4 ml/L",
+  timing: "Early infestation"
+},
+{
+  disease: "Termites",
+  crops: ["Sugarcane", "Wheat"],
+  symptoms: "Hollow stems, plant wilting",
+  severity: "High",
+  pesticide: "Chlorpyrifos",
+  amount: "2 L/acre",
+  timing: "Soil treatment"
+},
+{
+  disease: "Yellow Mosaic Virus",
+  crops: ["Beans", "Okra"],
+  symptoms: "Yellow patches on leaves",
+  severity: "High",
+  pesticide: "Imidacloprid",
+  amount: "0.3 ml/L",
+  timing: "Early stage"
+},
+{
+  disease: "Leaf Hopper",
+  crops: ["Rice", "Cotton"],
+  symptoms: "Yellowing and drying leaves",
+  severity: "Medium",
+  pesticide: "Buprofezin",
+  amount: "1 ml/L",
+  timing: "Early stage"
+},
+{
+  disease: "Shoot and Fruit Borer",
+  crops: ["Brinjal"],
+  symptoms: "Bored shoots and fruits",
+  severity: "High",
+  pesticide: "Emamectin Benzoate",
+  amount: "0.4 g/L",
+  timing: "Flowering stage"
+},
+{
+  disease: "Grasshopper Attack",
+  crops: ["Millets", "Vegetables"],
+  symptoms: "Chewed leaves",
+  severity: "Medium",
+  pesticide: "Malathion",
+  amount: "2 ml/L",
+  timing: "Early stage"
+},
+{
+  disease: "Black Rot",
+  crops: ["Cabbage"],
+  symptoms: "V-shaped yellow lesions",
+  severity: "High",
+  pesticide: "Copper fungicide",
+  amount: "3 g/L",
+  timing: "Early stage"
+},
+{
+  disease: "Damping Off",
+  crops: ["Seedlings"],
+  symptoms: "Seedlings collapse",
+  severity: "High",
+  pesticide: "Thiram",
+  amount: "2 g/kg seed",
+  timing: "Before sowing"
+}
   ];
 
+  const [activeTab, setActiveTab] = useState("info");
+  const [showOnlyNames, setShowOnlyNames] = useState(false);
   const [input, setInput] = useState("");
   const [result, setResult] = useState<any[]>([]);
   const [suggestions, setSuggestions] = useState<any[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
 
   const handleSearch = () => {
-    const value = input.toLowerCase();
-    setHasSearched(true);
+  const value = input.toLowerCase();
+  setHasSearched(true);
 
-    const matches = pesticideData.filter(
-      (item) =>
-        item.disease.toLowerCase().includes(value) ||
-        item.symptoms.toLowerCase().includes(value) ||
-        item.crops.some((c) => c.toLowerCase().includes(value))
-    );
+  // ✅ NEW: Show all data
+  if (["list", "total", "crops", "disease", "diseases"].includes(value)) {
+  setResult(pesticideData);
+  setShowOnlyNames(true); // 👈 IMPORTANT
+  setSuggestions([]);
+  return;
+}
 
-    setResult(matches);
-    setSuggestions([]);
-  };
+  const matches = pesticideData.filter(
+    (item) =>
+      item.disease.toLowerCase().includes(value) ||
+      item.symptoms.toLowerCase().includes(value) ||
+      item.crops.some((c) => c.toLowerCase().includes(value))
+  );
 
+  setResult(matches);
+  setSuggestions([]);
+};
+
+
+const getClosestMatch = (value: string) => {
+  const keywords = ["list", "total", "crops", "disease", "diseases"];
+
+  if (!value) return null;
+
+  return keywords.find((word) => {
+    let matchCount = 0;
+
+    for (let char of value) {
+      if (word.includes(char)) matchCount++;
+    }
+
+    // ✅ if most letters match → suggest
+    return matchCount >= Math.floor(value.length / 2);
+  });
+};
+
+const suggestionWord = getClosestMatch(input);
   return (
     <Layout>
       <div
@@ -139,32 +408,43 @@ export default function Pesticides() {
             </p>
           </div>
 
-          {/* Search */}
+
+
+          {/* Input Section */}
           <div className="flex gap-3 relative">
             <div className="relative flex-1">
               <input
                 value={input}
                 onChange={(e) => {
-                  const val = e.target.value.toLowerCase();
-                  setInput(val);
-                  setResult([]);
-                  setHasSearched(false);
+  const val = e.target.value.toLowerCase();
+  setInput(val);
+  setHasSearched(false);
 
-                  if (val.length > 0) {
-                    const matches = pesticideData.filter(
-                      (item) =>
-                        item.disease.toLowerCase().includes(val) ||
-                        item.crops.some((c) =>
-                          c.toLowerCase().includes(val)
-                        )
-                    );
-                    setSuggestions(matches.slice(0, 5));
-                  } else {
-                    setSuggestions([]);
-                  }
-                }}
+  // ✅ HANDLE "list" instantly
+  if (["list", "total", "crops", "disease", "diseases"].includes(val)) {
+    setResult(pesticideData);
+    setSuggestions([]);
+    return;
+  }
+
+  if (val.length > 0) {
+    const matches = pesticideData.filter(
+      (item) =>
+        item.disease.toLowerCase().includes(val) ||
+        item.symptoms.toLowerCase().includes(val) ||
+        item.crops.some((c) => c.toLowerCase().includes(val))
+    );
+
+    setSuggestions(matches.slice(0, 5));
+    setResult(matches);
+    setShowOnlyNames(false);
+  } else {
+    setSuggestions([]);
+    setResult([]);
+  }
+}}
                 
-                className="w-full p-3 pr-10 rounded-lg bg-white/70 text-primary text-black"
+                className="w-full p-3 pr-10 rounded-lg bg-white/70 text-foreground text-black"
                 placeholder="Enter crop / disease / symptoms"
               />
 
@@ -191,6 +471,12 @@ export default function Pesticides() {
             </button>
           </div>
 
+          {!input && (
+  <p className="text-black text-sm mt-2">
+    💡 Type <b>"list"</b>, <b>"total"</b>, <b>"crops"</b>, or <b>"diseases"</b> to view all available items.
+  </p>
+)}
+
           {/* Suggestions */}
           {suggestions.length > 0 && (
             <div className="bg-white rounded-lg">
@@ -210,28 +496,72 @@ export default function Pesticides() {
             </div>
           )}
 
-          {/* Results */}
-          {result.length > 0 ? (
-            <div className="grid md:grid-cols-2 gap-4">
-              {result.map((item, i) => (
-                <Card key={i} className="bg-white/50 backdrop-blur-md border border-white/20 shadow-lg">
-                  <CardContent className="p-4 space-y-1">
-                    <h2 className="font-bold text-lg">🦠 {item.disease}</h2>
-                    <p>🌾 {item.crops.join(", ")}</p>
-                    <p>⚠️ {item.severity}</p>
-                    <p>🧬 {item.symptoms}</p>
-                    <p>🧪 {item.pesticide}</p>
-                    <p>📦 {item.amount}</p>
-                    <p>⏰ {item.timing}</p>
-                  </CardContent>
-                </Card>
-              ))}
+          
+
+          {/* Smart suggestion for common typo */}
+{/* TYPO SUGGESTION */}
+          {input && result.length === 0 && suggestionWord && (
+            <div
+              className="p-2 bg-yellow-100 rounded cursor-pointer"
+              onClick={() => {
+                setInput(suggestionWord);
+                setResult(pesticideData);
+              }}
+            >
+              🤔 Did you mean <b>{suggestionWord}</b>?
             </div>
-          ) : hasSearched && input ? (
-            <p className="text-black font-semibold">
-              ❌ No data found
-            </p>
-          ) : null}
+          )}
+
+          {result.length > 0 ? (
+  <div>
+
+    {showOnlyNames ? (
+      // ✅ ONLY NAMES VIEW
+      <div className="space-y-2">
+        {result.map((item, i) => (
+          <div
+            key={i}
+            onClick={() => {
+              setResult([item]); // show full details
+              setShowOnlyNames(false);
+            }}
+            className="p-3 bg-white rounded cursor-pointer hover:bg-green-100 font-semibold"
+          >
+            🦠 {item.disease}
+          </div>
+        ))}
+      </div>
+
+    ) : (
+      // ✅ FULL DETAILS VIEW
+      <div className="grid md:grid-cols-2 gap-4">
+        {result.map((item, i) => (
+          <Card key={i} className="bg-white/50 backdrop-blur-md border border-white/20 shadow-lg">
+            <CardContent className="p-4 space-y-2">
+
+              <h2 className="font-bold text-lg text-black">
+                🦠 {item.disease}
+              </h2>
+
+              <p><b>🌾 Crops:</b> {item.crops.join(", ")}</p>
+              <p><b>⚠️ Seriousness:</b> {item.severity}</p>
+              <p><b>⏰ Stage:</b> {item.timing}</p>
+              <p><b>🧬 Symptoms:</b> {item.symptoms}</p>
+              <p><b>🧪 Solution:</b> {item.pesticide}</p>
+              <p><b>📦 Quantity:</b> {item.amount}</p>
+
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    )}
+
+  </div>
+) : input && result.length === 0 && suggestions.length === 0 ? (
+  <p className="text-black font-semibold">
+    ❌ No data found. Try another crop 🌾
+  </p>
+) : null}
 
           {/* Default 9 diseases */}
           {!input && (
@@ -241,13 +571,36 @@ export default function Pesticides() {
               </h2>
 
               <div className="grid md:grid-cols-3 gap-4">
-                {pesticideData.slice(0, 9).map((item, i) => (
-                  <Card key={i} className="bg-white/50 backdrop-blur-md border border-white/20 shadow-lg">
-                    <CardContent className="p-3">
-                      🦠 {item.disease}
-                    </CardContent>
-                  </Card>
-                ))}
+                {pesticideData.sort(() => 0.5 - Math.random()).slice(0, 9).map((item, i) => (
+  <Card key={i} className="bg-white/50 backdrop-blur-md border border-white/20 shadow-lg">
+    <CardContent className="p-4 space-y-2">
+
+      {/* 🦠 Disease Name */}
+      <h2 className="font-bold text-lg text-black">
+        🦠 {item.disease}
+      </h2>
+
+      {/* 🌾 Crops */}
+      <p><b>🌾 Crops:</b> {item.crops.join(", ")}</p>
+
+      {/* ⚠️ Seriousness */}
+      <p><b>⚠️ Seriousness:</b> {item.severity}</p>
+
+      {/* ⏰ Stage */}
+      <p><b>⏰ Stage:</b> {item.timing}</p>
+
+      {/* 🧬 Symptoms */}
+      <p><b>🧬 Symptoms:</b> {item.symptoms}</p>
+
+      {/* 🧪 Solution */}
+      <p><b>🧪 Solution:</b> {item.pesticide}</p>
+
+      {/* 📦 Quantity */}
+      <p><b>📦 Quantity:</b> {item.amount}</p>
+
+    </CardContent>
+  </Card>
+))}
               </div>
             </div>
           )}

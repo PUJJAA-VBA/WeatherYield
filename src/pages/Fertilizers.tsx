@@ -389,7 +389,7 @@ export default function Fertilizers() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {fertilizerData
                 .filter((item) => item.crop !== result?.crop)
-                .slice(0, 9)
+                .sort(() => 0.5 - Math.random()).slice(0, 9)
                 .map((item) => (
               <Card key={item.crop} className="bg-white/50 backdrop-blur-md border border-white/20 shadow-lg">
                 <CardContent className="p-4 space-y-1">
