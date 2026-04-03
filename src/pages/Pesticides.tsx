@@ -9,6 +9,236 @@ export default function Pesticides() {
 
   const pesticideData = [
     {
+  disease: "Bacterial Panicle Blight",
+  crops: ["Rice"],
+  symptoms: "Discolored grains, empty seeds",
+  severity: "High",
+  pesticide: "Streptomycin",
+  amount: "500 g/acre",
+  timing: "Flowering stage",
+  purpose: "Controls bacterial infection"
+},
+{
+  disease: "Rice Hispa",
+  crops: ["Rice"],
+  symptoms: "Scraped leaves, white streaks",
+  severity: "Medium",
+  pesticide: "Chlorpyrifos",
+  amount: "1 ml/L",
+  timing: "Early stage",
+  purpose: "Controls beetles"
+},
+{
+  disease: "Rice Caseworm",
+  crops: ["Rice"],
+  symptoms: "Cut leaves floating on water",
+  severity: "Medium",
+  pesticide: "Cartap Hydrochloride",
+  amount: "1 g/L",
+  timing: "Early stage",
+  purpose: "Larvae control"
+},
+{
+  disease: "Rice Leaf Folder",
+  crops: ["Rice"],
+  symptoms: "Folded leaves, eaten tissues",
+  severity: "High",
+  pesticide: "Chlorantraniliprole",
+  amount: "0.4 ml/L",
+  timing: "Early infestation",
+  purpose: "Controls larvae"
+},
+{
+  disease: "Rice Earhead Bug",
+  crops: ["Rice"],
+  symptoms: "Empty grains, bug presence",
+  severity: "High",
+  pesticide: "Malathion",
+  amount: "2 ml/L",
+  timing: "Milking stage",
+  purpose: "Controls bugs"
+},
+{
+  disease: "Rice Whorl Maggot",
+  crops: ["Rice"],
+  symptoms: "White streaks on leaves",
+  severity: "Medium",
+  pesticide: "Carbofuran",
+  amount: "1 kg/acre",
+  timing: "Early stage",
+  purpose: "Larvae control"
+},
+{
+  disease: "Rice Tungro Bacilliform",
+  crops: ["Rice"],
+  symptoms: "Yellow-orange leaves",
+  severity: "High",
+  pesticide: "Imidacloprid",
+  amount: "0.5 ml/L",
+  timing: "Early stage",
+  purpose: "Controls vector insects"
+},
+{
+  disease: "Rice Sheath Rot",
+  crops: ["Rice"],
+  symptoms: "Rotting sheath, poor grain filling",
+  severity: "High",
+  pesticide: "Carbendazim",
+  amount: "1 g/L",
+  timing: "Booting stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Banana Bunchy Top Virus",
+  crops: ["Banana"],
+  symptoms: "Small leaves, bunchy appearance",
+  severity: "High",
+  pesticide: "Imidacloprid",
+  amount: "0.5 ml/L",
+  timing: "Early stage",
+  purpose: "Controls aphids"
+},
+{
+  disease: "Tomato Mosaic Virus",
+  crops: ["Tomato"],
+  symptoms: "Mottled leaves",
+  severity: "High",
+  pesticide: "Neem Oil",
+  amount: "3 ml/L",
+  timing: "Early stage",
+  purpose: "Controls vectors"
+},
+{
+  disease: "Cabbage Worm",
+  crops: ["Cabbage"],
+  symptoms: "Holes in leaves",
+  severity: "Medium",
+  pesticide: "Spinosad",
+  amount: "0.3 ml/L",
+  timing: "Early stage",
+  purpose: "Larvae control"
+},
+{
+  disease: "Onion Purple Blotch",
+  crops: ["Onion"],
+  symptoms: "Purple lesions",
+  severity: "High",
+  pesticide: "Mancozeb",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Chili Anthracnose",
+  crops: ["Chili"],
+  symptoms: "Sunken fruit spots",
+  severity: "High",
+  pesticide: "Carbendazim",
+  amount: "1 g/L",
+  timing: "Fruit stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Brinjal Shoot Borer",
+  crops: ["Brinjal"],
+  symptoms: "Wilted shoots",
+  severity: "High",
+  pesticide: "Emamectin Benzoate",
+  amount: "0.4 g/L",
+  timing: "Early stage",
+  purpose: "Larvae control"
+},
+{
+  disease: "Cotton Leaf Reddening",
+  crops: ["Cotton"],
+  symptoms: "Red leaves",
+  severity: "Medium",
+  pesticide: "Micronutrient Spray",
+  amount: "As required",
+  timing: "Mid stage",
+  purpose: "Nutrient correction"
+},
+{
+  disease: "Groundnut Rust",
+  crops: ["Groundnut"],
+  symptoms: "Brown pustules",
+  severity: "High",
+  pesticide: "Tebuconazole",
+  amount: "1 ml/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Soybean Mosaic Virus",
+  crops: ["Soybean"],
+  symptoms: "Mosaic leaves",
+  severity: "High",
+  pesticide: "Imidacloprid",
+  amount: "0.3 ml/L",
+  timing: "Early stage",
+  purpose: "Controls aphids"
+},
+{
+  disease: "Potato Scab",
+  crops: ["Potato"],
+  symptoms: "Rough skin lesions",
+  severity: "Medium",
+  pesticide: "Crop Rotation",
+  amount: "N/A",
+  timing: "Pre-sowing",
+  purpose: "Soil management"
+},
+{
+  disease: "Sugarcane Smut",
+  crops: ["Sugarcane"],
+  symptoms: "Black whip-like structures",
+  severity: "High",
+  pesticide: "Carbendazim",
+  amount: "1 g/L",
+  timing: "Seed treatment",
+  purpose: "Fungal control"
+},
+{
+  disease: "Mustard Aphids",
+  crops: ["Mustard"],
+  symptoms: "Sticky leaves",
+  severity: "Medium",
+  pesticide: "Imidacloprid",
+  amount: "0.3 ml/L",
+  timing: "Early stage",
+  purpose: "Pest control"
+},
+{
+  disease: "Pea Powdery Mildew",
+  crops: ["Pea"],
+  symptoms: "White powder",
+  severity: "Medium",
+  pesticide: "Sulfur",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Okra Fruit Borer",
+  crops: ["Okra"],
+  symptoms: "Holes in fruits",
+  severity: "High",
+  pesticide: "Spinosad",
+  amount: "0.3 ml/L",
+  timing: "Fruit stage",
+  purpose: "Larvae control"
+},
+{
+  disease: "Papaya Mealybug",
+  crops: ["Papaya"],
+  symptoms: "White insects",
+  severity: "Medium",
+  pesticide: "Neem Oil",
+  amount: "3 ml/L",
+  timing: "Early stage",
+  purpose: "Eco control"
+},
+    {
       disease: "Leaf Spot",
       crops: ["Rice", "Wheat", "Maize"],
       symptoms: "Brown spots on leaves",

@@ -72,21 +72,21 @@ const { IST, UTC } = getIndianTimes();
               🌾 Weather Dashboard
             </h1>
 
-            <p className="text-white/150 text-sm text-white/90 mt-1">
+            <p className="text-white/150 text-sm text-white/90 mt-1 font-extrabold">
               Real-time weather insights for smarter farming
             </p>
 
-            <p className="text-white/100 text-sm font-medium text-green-200 mt-1">
+            <p className="text-white/100 text-sm font-medium text-green-200 mt-1 font-extrabold">
               {greeting}
             </p>
           </div>
 
-          <div className="text-right text-white space-y-1">
+          <div className="text-right text-white space-y-1 font-extrabold">
   <p className="text-s sm:text-sm font-semibold">
     📅 {today}
   </p>
 
-  <p className="text-s text-white/90 font-bold text-primary">
+  <p className="text-s text-white/90 font-bold text-primary font-extrabold">
     🕒 IST: {IST}
   </p>
 
