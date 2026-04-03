@@ -471,6 +471,33 @@ const suggestionWord = getClosestMatch(input);
             </button>
           </div>
 
+{/* 🔥 Severity Filter */}
+<div className="flex gap-2 mt-3">
+  {["High", "Medium", "Low"].map((level) => (
+    <button
+      key={level}
+      onClick={() => {
+        const matches = pesticideData.filter(
+          (item) => item.severity === level
+        );
+
+        setResult(matches);
+        setShowOnlyNames(false);
+        setInput(""); // optional (clears search box)
+      }}
+      className={`px-3 py-1 rounded-full text-sm text-black ${
+        level === "High"
+          ? "bg-red-400"
+          : level === "Medium"
+          ? "bg-yellow-400"
+          : "bg-green-400"
+      }`}
+    >
+      {level}
+    </button>
+  ))}
+</div>
+
           {!input && (
   <p className="text-black text-sm mt-2">
     💡 Type <b>"list"</b>, <b>"total"</b>, <b>"crops"</b>, or <b>"diseases"</b> to view all available items.
