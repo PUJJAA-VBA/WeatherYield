@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useState } from "react";
 import { X } from "lucide-react";
 import Layout from "@/components/Layout";
@@ -687,6 +688,14 @@ const getClosestMatch = (value: string) => {
   });
 };
 
+
+
+const randomDiseases = useMemo(() => {
+  return [...pesticideData] // ✅ copy array
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 9);
+}, []);
+
 const suggestionWord = getClosestMatch(input);
   return (
     <Layout>
@@ -901,7 +910,7 @@ const suggestionWord = getClosestMatch(input);
               </h2>
 
               <div className="grid md:grid-cols-3 gap-4">
-                {pesticideData.sort(() => 0.5 - Math.random()).slice(0, 9).map((item, i) => (
+                {randomDiseases.map((item, i) => (
   <Card key={i} className="bg-white/50 backdrop-blur-md border border-white/20 shadow-lg">
     <CardContent className="p-4 space-y-2">
 

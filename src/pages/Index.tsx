@@ -116,7 +116,9 @@ const { IST, UTC } = getIndianTimes();
           <>
             {/* CURRENT WEATHER */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <Card className="lg:col-span-2 bg-white/80 backdrop-blur-md border border-white/20 shadow-lg overflow-hidden">
+
+              <Card className="lg:col-span-2 bg-white/60 backdrop-blur-md border border-white/20 shadow-lg overflow-hidden">
+              {/* className="lg:col-span-2 bg-white/80 backdrop-blur-md border border-white/20 shadow-lg overflow-hidden"> */}
                 <CardContent className="p-6 flex flex-col sm:flex-row items-center gap-6">
                   <div className="flex items-center gap-4">
                     <img
@@ -129,39 +131,39 @@ const { IST, UTC } = getIndianTimes();
                       <div className="text-5xl font-extrabold text-gray-900">
                         {Math.round(current.temp)}°C
                       </div>
-                      <p className="text-gray-600 capitalize text-lg">
+                      <p className="text-black capitalize text-lg">
                         {current.description}
                       </p>
                     </div>
                   </div>
 
                   <div className="flex-1 grid grid-cols-2 gap-3 text-sm w-full">
-                    <div className="flex items-center gap-2 text-gray-700">
+                    <div className="flex items-center gap-2 text-black">
                       <MapPin className="w-4 h-4 text-blue-500" />
                       {current.city}, {current.country}
                     </div>
 
-                    <div className="flex items-center gap-2 text-gray-700">
+                    <div className="flex items-center gap-2 text-black">
                       <Thermometer className="w-4 h-4 text-orange-500" />
                       Feels like {Math.round(current.feels_like)}°C
                     </div>
 
-                    <div className="flex items-center gap-2 text-gray-700">
+                    <div className="flex items-center gap-2 text-black">
                       <Droplets className="w-4 h-4 text-blue-400" />
                       Humidity {current.humidity}%
                     </div>
 
-                    <div className="flex items-center gap-2 text-gray-700">
+                    <div className="flex items-center gap-2 text-black">
                       <Wind className="w-4 h-4" />
                       Wind {current.wind_speed} m/s
                     </div>
 
-                    <div className="flex items-center gap-2 text-gray-700">
+                    <div className="flex items-center gap-2 text-black">
                       <Sunrise className="w-4 h-4 text-yellow-500" />
                       Rise {formatTime(current.sunrise)}
                     </div>
 
-                    <div className="flex items-center gap-2 text-gray-700">
+                    <div className="flex items-center gap-2 text-black">
                       <Sunset className="w-4 h-4 text-orange-400" />
                       Set {formatTime(current.sunset)}
                     </div>
@@ -171,11 +173,12 @@ const { IST, UTC } = getIndianTimes();
 
               {/* SIDE CARDS */}
               <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
-                <Card className="bg-white/80 backdrop-blur-md border border-white/20 shadow-md rounded-xl">
+                <Card className="bg-white/60 backdrop-blur-md border border-white/20 shadow-lg rounded-xl">
+                {/* className="bg-white/80 backdrop-blur-md border border-white/20 shadow-md rounded-xl"> */}
                   <CardContent className="p-4 flex items-center gap-3">
                     <Gauge className="w-5 h-5 text-blue-500" />
                     <div>
-                      <p className="text-xs text-gray-500">Pressure</p>
+                      <p className="text-s text-black font-bold">Pressure</p>
                       <p className="font-bold text-gray-900">
                         {current.pressure} hPa
                       </p>
@@ -183,11 +186,11 @@ const { IST, UTC } = getIndianTimes();
                   </CardContent>
                 </Card>
 
-                <Card className="bg-white/80 backdrop-blur-md border border-white/20 shadow-md rounded-xl">
+                <Card className="bg-white/60 backdrop-blur-md border border-white/20 shadow-lg rounded-xl">
                   <CardContent className="p-4 flex items-center gap-3">
                     <Eye className="w-5 h-5 text-blue-400" />
                     <div>
-                      <p className="text-xs text-gray-500">Visibility</p>
+                      <p className="text-s text-black font-bold">Visibility</p>
                       <p className="font-bold text-gray-900">
                         {(current.visibility / 1000).toFixed(1)} km
                       </p>
@@ -207,10 +210,11 @@ const { IST, UTC } = getIndianTimes();
                 {forecast.map((day) => (
                   <Card
                     key={day.date}
-                    className="bg-white/80 backdrop-blur-md border border-white/20 shadow-sm"
-                  >
+                    className="bg-white/60 backdrop-blur-md border border-white/20 shadow-lg rounded-xl">
+                    {/* className="bg-white/80 backdrop-blur-md border border-white/20 shadow-sm" */}
+                  
                     <CardContent className="p-4 text-center space-y-2">
-                      <p className="font-bold text-sm text-gray-800">
+                      <p className="font-bold text-sm text-black text-medium">
                         {day.day}
                       </p>
 
@@ -226,12 +230,12 @@ const { IST, UTC } = getIndianTimes();
                         <span className="font-bold text-gray-900">
                           {Math.round(day.temp_max)}°
                         </span>
-                        <span className="text-gray-500">
+                        <span className="text-gray-600">
                           {Math.round(day.temp_min)}°
                         </span>
                       </div>
 
-                      <div className="flex items-center justify-center gap-1 text-xs text-gray-600">
+                      <div className="flex items-center justify-center gap-1 text-xs text-gray-700">
                         <CloudRain className="w-3 h-3" />
                         {day.rain.toFixed(1)}mm
                       </div>
