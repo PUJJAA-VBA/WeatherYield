@@ -79,9 +79,51 @@ export default function Fertilizers() {
 { crop: "Red Gram", category: "Pulses", fertilizer: "Urea", amount: "35 kg/acre", timing: "20 days", purpose: "Plant growth" },
 
 { crop: "Almond", category: "Fruits", fertilizer: "NPK", amount: "45 kg/tree", timing: "Spring", purpose: "Nut quality" },
-{ crop: "Cashew", category: "Plantation", fertilizer: "Organic + NPK", amount: "50 kg/tree", timing: "Before flowering", purpose: "Nut yield" }
+{ crop: "Cashew", category: "Plantation", fertilizer: "Organic + NPK", amount: "50 kg/tree", timing: "Before flowering", purpose: "Nut yield" },
+{ crop: "Lentil", category: "Pulses", fertilizer: "DAP", amount: "30 kg/acre", timing: "Before sowing", purpose: "Root growth" },
+{ crop: "Chickpea", category: "Pulses", fertilizer: "Rhizobium", amount: "25 kg/acre", timing: "Before sowing", purpose: "Nitrogen fixation" },
+{ crop: "Pea", category: "Pulses", fertilizer: "NPK", amount: "20 kg/acre", timing: "Early stage", purpose: "Growth" },
+
+{ crop: "Beetroot", category: "Vegetables", fertilizer: "Potash", amount: "25 kg/acre", timing: "Root stage", purpose: "Root size" },
+{ crop: "Radish", category: "Vegetables", fertilizer: "Urea", amount: "20 kg/acre", timing: "Early stage", purpose: "Root growth" },
+{ crop: "Lettuce", category: "Vegetables", fertilizer: "NPK", amount: "15 kg/acre", timing: "Early stage", purpose: "Leaf growth" },
+
+{ crop: "Strawberry", category: "Fruits", fertilizer: "NPK", amount: "25 kg/acre", timing: "Flowering", purpose: "Fruit quality" },
+{ crop: "Blueberry", category: "Fruits", fertilizer: "Organic", amount: "20 kg/acre", timing: "Spring", purpose: "Growth" },
+{ crop: "Cherry", category: "Fruits", fertilizer: "NPK", amount: "40 kg/tree", timing: "Before flowering", purpose: "Fruit yield" },
+
+{ crop: "Oats", category: "Grains", fertilizer: "Urea", amount: "40 kg/acre", timing: "Early stage", purpose: "Growth" },
+{ crop: "Rye", category: "Grains", fertilizer: "NPK", amount: "35 kg/acre", timing: "Sowing", purpose: "Balanced growth" },
+
+{ crop: "Flax", category: "Oil Seeds", fertilizer: "DAP", amount: "30 kg/acre", timing: "Before sowing", purpose: "Fiber & oil" },
+{ crop: "Castor", category: "Oil Seeds", fertilizer: "NPK", amount: "40 kg/acre", timing: "Early stage", purpose: "Oil yield" },
+
+{ crop: "Bamboo", category: "Plantation", fertilizer: "Organic", amount: "50 kg/acre", timing: "Yearly", purpose: "Growth" },
+{ crop: "Olive", category: "Plantation", fertilizer: "NPK", amount: "45 kg/tree", timing: "Spring", purpose: "Oil production" },
+
+{ crop: "Vanilla", category: "Spices", fertilizer: "Compost", amount: "30 kg/acre", timing: "Early stage", purpose: "Growth" },
+{ crop: "Saffron", category: "Spices", fertilizer: "Organic", amount: "20 kg/acre", timing: "Before planting", purpose: "Flower yield" },
+
+{ crop: "Quinoa", category: "Grains", fertilizer: "NPK", amount: "30 kg/acre", timing: "Early stage", purpose: "Growth" },
+{ crop: "Buckwheat", category: "Grains", fertilizer: "Urea", amount: "25 kg/acre", timing: "Early stage", purpose: "Yield" },
+
+{ crop: "Dragon Fruit", category: "Fruits", fertilizer: "Organic + NPK", amount: "35 kg/acre", timing: "Flowering", purpose: "Fruit yield" },
+{ crop: "Kiwi", category: "Fruits", fertilizer: "NPK", amount: "40 kg/tree", timing: "Spring", purpose: "Fruit quality" },
+
+{ crop: "Avocado", category: "Fruits", fertilizer: "Organic", amount: "50 kg/tree", timing: "Yearly", purpose: "Tree health" },
+{ crop: "Fig", category: "Fruits", fertilizer: "Compost", amount: "30 kg/tree", timing: "Spring", purpose: "Fruit growth" },
+
+{ crop: "Sweet Potato", category: "Vegetables", fertilizer: "Potash", amount: "35 kg/acre", timing: "Tuber stage", purpose: "Tuber growth" },
+{ crop: "Turnip", category: "Vegetables", fertilizer: "Urea", amount: "20 kg/acre", timing: "Early stage", purpose: "Root growth" },
+
+{ crop: "Zucchini", category: "Vegetables", fertilizer: "NPK", amount: "30 kg/acre", timing: "Flowering", purpose: "Fruit growth" },
+{ crop: "Asparagus", category: "Vegetables", fertilizer: "Compost", amount: "40 kg/acre", timing: "Early stage", purpose: "Growth" },
+
+{ crop: "Hemp", category: "Cash Crops", fertilizer: "NPK", amount: "40 kg/acre", timing: "Early stage", purpose: "Fiber yield" },
+{ crop: "Indigo", category: "Cash Crops", fertilizer: "Organic", amount: "30 kg/acre", timing: "Early stage", purpose: "Dye production" }
 ];
 
+  const [hasSearched, setHasSearched] = useState(false);
   const [showCategoriesOnly, setShowCategoriesOnly] = useState(false);
   const categories = [...new Set(fertilizerData.map(item => item.category))];
   const [cropInput, setCropInput] = useState("");
@@ -93,19 +135,19 @@ export default function Fertilizers() {
   const handleSearch = () => {
   const value = cropInput.trim().toLowerCase();
   setSuggestions([]);
+  setHasSearched(true); // 👈 important
 
-  // if user types "category"
   if (
-  value.includes("cat") ||
-  value.includes("categ") ||
-  value.includes("category") ||
-  value.includes("categories")
-) {
-  setShowCategoriesOnly(true);
-  setResult(null);
-  setCategoryResults([]);
-  return;
-}
+    value.includes("cat") ||
+    value.includes("categ") ||
+    value.includes("category") ||
+    value.includes("categories")
+  ) {
+    setShowCategoriesOnly(true);
+    setResult(null);
+    setCategoryResults([]);
+    return;
+  }
 
   const cropMatch = fertilizerData.find(
     (c) => c.crop.toLowerCase() === value
@@ -144,60 +186,76 @@ export default function Fertilizers() {
 
         {/* Title */}
         <div>
-          <h1 className="text-black/90 text-3xl font-heading font-extrabold text-primary">
+          <h1 className="text-black text-3xl font-heading font-extrabold text-foreground">
             🌱 Fertilizer Recommendation
           </h1>
-          <p className="text-black/90 text-muted-primary mt-1">
+          <p className="text-black text-muted-primary mt-1">
             Get fertilizer suggestions based on your crop
           </p>
         </div>
 
+
+
+
+
         {/* Input Section */}
 
-        <div className="flex flex-col sm:flex-row gap-3">
-  <input
-    type="text"
-    placeholder="Enter crop or category (e.g., Rice, Fruits...)"
-    value={cropInput}
-    onChange={(e) => {
-  const value = e.target.value.toLowerCase();
-  setShowCategoriesOnly(false);
-  setCropInput(value);
+        <div className="flex flex-col sm:flex-row gap-3 relative">
+  <div className="relative flex-1">
+    <input
+      type="text"
+      placeholder="Enter crop or category (e.g., Rice, Fruits...)"
+      value={cropInput}
+      onChange={(e) => {
+        const value = e.target.value.toLowerCase();
+        setShowCategoriesOnly(false);
+        setCropInput(value);
+        setResult(null);
+        setCategoryResults([]);
 
-  if (value.length > 0) {
-    // crop suggestions
-    const cropMatches = fertilizerData.filter((c) =>
-      c.crop.toLowerCase().includes(value)
-    );
+        if (value.length > 0) {
+          const cropMatches = fertilizerData.filter((c) =>
+            c.crop.toLowerCase().includes(value)
+          );
 
-    // category suggestions
-    const categoryMatches = categories
-      .filter((cat) => cat.toLowerCase().includes(value))
-      .map((cat) => ({ crop: cat, isCategory: true }));
+          const categoryMatches = categories
+            .filter((cat) => cat.toLowerCase().includes(value))
+            .map((cat) => ({ crop: cat, isCategory: true }));
 
-    // special case: user types "category" or "categories"
-    if (value.includes("category")) {
-      const allCategories = categories.map((cat) => ({
-        crop: cat,
-        isCategory: true
-      }));
-      setSuggestions(allCategories);
-      return;
-    }
+          if (value.includes("category")) {
+            const allCategories = categories.map((cat) => ({
+              crop: cat,
+              isCategory: true
+            }));
+            setSuggestions(allCategories);
+            return;
+          }
 
-    // merge both
-    const combined = [...categoryMatches, ...cropMatches].slice(0, 10);
+          const combined = [...categoryMatches, ...cropMatches].slice(0, 10);
+          setSuggestions(combined);
+        } else {
+          setSuggestions([]);
+        }
+      }}
+      className="bg-white/80 backdrop-blur-md border border-white/20 shadow-lg w-full p-3 pr-10 rounded-lg outline-none"
+    />
 
-    setSuggestions(combined);
-  } else {
-    setSuggestions([]);
-  }
-
-  setResult(null);
-  setCategoryResults([]);
-}}
-    className="bg-white/80 backdrop-blur-md border border-white/20 shadow-lg flex-1 p-3 rounded-lg outline-none"
-  />
+    {/* ❌ Clear button */}
+    {cropInput && (
+      <button
+        onClick={() => {
+          setCropInput("");
+          setSuggestions([]);
+          setResult(null);
+          setCategoryResults([]);
+          setShowCategoriesOnly(false);
+        }}
+        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-black"
+      >
+        ❌
+      </button>
+    )}
+  </div>
 
   <button
     onClick={handleSearch}
@@ -208,7 +266,7 @@ export default function Fertilizers() {
 </div>
 
 {cropInput.length === 0 && (
-  <p className="text-black/90 text-medium mt-1 text-primary">
+  <p className="text-black text-medium mt-1 text-foreground">
     💡 You can search by <b>crop</b> or <b>category</b> (e.g., Fruits, Grains)
   </p>
 )}
@@ -285,11 +343,17 @@ export default function Fertilizers() {
 ) : cropInput &&
     categoryResults.length === 0 &&
     suggestions.length === 0 &&
-    !showCategoriesOnly && (
-  <p className="text-black font-semibold">
-    ❌ No data found. Try another crop 🌾
-  </p>
+    !showCategoriesOnly && hasSearched &&
+  cropInput &&
+  categoryResults.length === 0 &&
+  suggestions.length === 0 &&
+  !showCategoriesOnly &&
+  !result && (
+    <p className="text-black font-semibold">
+      ❌ No data found. Try another crop 🌾
+    </p>
 )}
+
 
         {categoryResults.length > 0 && (
   <div>
@@ -316,9 +380,9 @@ export default function Fertilizers() {
         {/* All Crops Section */}
         {!result && categoryResults.length === 0 && !showCategoriesOnly && (
         <div>
-          <h2 className="text-black/80 text-2xl font-heading font-bold text-primary mb-4 flex items-center gap-2">
+          <h2 className="text-black text-2xl font-heading font-bold text-foreground mb-4 flex items-center gap-2">
             {/* <Sprout className="text-white w-5 h-5 text-primary" /> */}
-            🌱 Some Common Crops Fertilizer Guide
+            🧪 Common Crops Fertilizer Guide
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
