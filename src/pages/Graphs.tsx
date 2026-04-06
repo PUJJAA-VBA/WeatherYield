@@ -5,15 +5,18 @@ import Layout from "@/components/Layout";
 import { useWeather } from "@/hooks/useWeather";
 import heroFarm from "@/assets/hero-farm1.jpg";
 
+
+
 export default function Graphs() {
   const { forecast, loading } = useWeather();
+  console.log(forecast);
   const data = forecast.map((d) => ({
     day: d.day,
     "Max Temp": Math.round(d.temp_max),
     "Min Temp": Math.round(d.temp_min),
     Humidity: d.humidity,
     "Wind Speed": d.wind_speed,
-    Rainfall: Number(d.rain.toFixed(1)),
+    Rainfall: d.rain ? Number(d.rain.toFixed(1)) : 0,
   }));
 
   if (loading) {

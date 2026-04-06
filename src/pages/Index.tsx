@@ -5,9 +5,12 @@ import Layout from "@/components/Layout";
 import ApiKeyModal from "@/components/ApiKeyModal";
 import { useWeather } from "@/hooks/useWeather";
 import { getWeatherIconUrl } from "@/lib/weather";
+import { useState } from "react";
 
 export default function Index() {
-  const { current, forecast, loading, error, hasKey, checkKey } = useWeather();
+  const [location, setLocation] = useState("");
+
+  const { current, forecast, loading, error, hasKey, checkKey, fetchWeatherByCity } = useWeather();
 
   if (!hasKey) {
     return (
@@ -105,6 +108,28 @@ const { IST, UTC } = getIndianTimes();
           </div>
         )}
 
+      {/* 🔍 SEARCH BY LOCATION */}
+<div className="flex gap-2 mt-4">
+  <input
+    value={location}
+    onChange={(e) => setLocation(e.target.value)}
+    onKeyDown={(e) => {
+      if (e.key === "Enter") {
+        fetchWeatherByCity(location);
+      }
+    }}
+    placeholder="Enter city name..."
+    // className="p-3 rounded-lg bg-white/60 backdrop-blur-md border border-white/20 shadow-lg"
+    className="p-3 rounded-xl w-full bg-white/60 backdrop-blur-md border border-gray-300/30 shadow-md text-black placeholder:text-gray-900/70 focus:outline-none focus:ring-2 focus:ring-black/20"
+  />
+
+  <button
+    onClick={() => fetchWeatherByCity(location)}
+    className="px-4 bg-green-600 text-white rounded-lg"
+  >
+    Search
+  </button>
+</div>
         {/* Loading */}
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

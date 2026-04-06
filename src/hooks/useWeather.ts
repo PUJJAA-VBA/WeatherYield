@@ -11,6 +11,42 @@ export function useWeather() {
 
   const checkKey = useCallback(() => setHasKey(!!getApiKey()), []);
 
+  const fetchWeatherByCity = async (city: string) => {
+  if (!city) return;
+
+  setLoading(true);
+  const apiKey = getApiKey();
+  try {
+    const res = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+    );
+
+    const data = await res.json();
+
+    if (!data.coord) {
+      setError("City not found");
+      return;
+    }
+
+    const lat = data.coord.lat;
+    const lon = data.coord.lon;
+
+    // 👉 VERY IMPORTANT: this line connects everything
+    const [c, f] = await Promise.all([
+  fetchCurrentWeather(lat, lon),
+  fetchForecast(lat, lon),
+]);
+
+setCurrent(c);
+setForecast(f);
+
+  } catch (err) {
+    setError("Error fetching weather");
+  }
+
+  setLoading(false);
+};
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (pos) => setCoords({ lat: pos.coords.latitude, lon: pos.coords.longitude }),
@@ -40,5 +76,5 @@ export function useWeather() {
     if (hasKey && coords) fetchData();
   }, [hasKey, coords, fetchData]);
 
-  return { current, forecast, loading, error, hasKey, checkKey, refetch: fetchData };
+  return { current, forecast, loading, error, hasKey, checkKey, refetch: fetchData, fetchWeatherByCity };
 }
