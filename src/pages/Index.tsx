@@ -120,7 +120,8 @@ const { IST, UTC } = getIndianTimes();
     }}
     placeholder="Enter city name..."
     // className="p-3 rounded-lg bg-white/60 backdrop-blur-md border border-white/20 shadow-lg"
-    className="p-3 rounded-xl w-full bg-white/60 backdrop-blur-md border border-gray-300/30 shadow-md text-black placeholder:text-gray-900/70 focus:outline-none focus:ring-2 focus:ring-black/20"
+    // focus:outline-none focus:ring-2 focus:ring-black/20 text-black
+    className="p-3 rounded-lg w-full bg-white/70 backdrop-blur-md border border-white/20 shadow-lg placeholder:text-black"
   />
 
   <button
