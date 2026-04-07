@@ -6,15 +6,17 @@ import ApiKeyModal from "@/components/ApiKeyModal";
 import { useWeather } from "@/hooks/useWeather";
 import { getWeatherIconUrl } from "@/lib/weather";
 import { useState } from "react";
+import { useLocation } from "../context/LocationContext";
 
 export default function Index() {
-  const [location, setLocation] = useState("");
-
-  const { current, forecast, loading, error, hasKey, checkKey, fetchWeatherByCity } = useWeather();
+  const { city, setCity } = useLocation();
+  const { resetToCurrentLocation } = useWeather();
+  const { current, forecast, loading, error, hasKey, checkKey, fetchWeatherByCity } = useWeather(city);
 
   if (!hasKey) {
     return (
-      <Layout>
+      <Layout
+      >
         <div className="flex items-center justify-center min-h-[60vh]">
           <ApiKeyModal onSaved={checkKey} />
         </div>
@@ -111,11 +113,11 @@ const { IST, UTC } = getIndianTimes();
       {/* 🔍 SEARCH BY LOCATION */}
 <div className="flex gap-2 mt-4">
   <input
-    value={location}
-    onChange={(e) => setLocation(e.target.value)}
+    value={city}
+onChange={(e) => setCity(e.target.value)}
     onKeyDown={(e) => {
       if (e.key === "Enter") {
-        fetchWeatherByCity(location);
+        fetchWeatherByCity(city);
       }
     }}
     placeholder="Enter city name..."
@@ -124,8 +126,17 @@ const { IST, UTC } = getIndianTimes();
     className="p-3 rounded-lg w-full bg-white/70 backdrop-blur-md border border-white/20 shadow-lg placeholder:text-black"
   />
 
+<button
+  onClick={() => {
+    setCity("");
+    resetToCurrentLocation(); // ✅ CLEAN RESET
+  }}
+  className="px-3 bg-gray-500 text-white rounded-lg"
+>
+  x
+</button>
   <button
-    onClick={() => fetchWeatherByCity(location)}
+    onClick={() => fetchWeatherByCity(city)}
     className="px-4 bg-neutral-900/70 backdrop-blur-lg border-b border-white/20 shadow-lg text-white rounded-lg"
   >
     Search

@@ -4,21 +4,22 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index";
-import Graphs from "./pages/Graphs";
-import Recommendations from "./pages/Recommendations";
+import Graphs from "./pages/analytics";
+import Recommendations from "./pages/cropplanner";
 import NotFound from "./pages/NotFound";
 import Fertilizers from "./pages/Fertilizers";
 import Pesticides from "./pages/Pesticides";
-
+import { LocationProvider } from "./context/LocationContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <BrowserRouter>
+    <LocationProvider>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/graphs" element={<Graphs />} />
@@ -27,8 +28,9 @@ const App = () => (
           <Route path="/fertilizers" element={<Fertilizers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
     </TooltipProvider>
+    </LocationProvider>
+    </BrowserRouter>
   </QueryClientProvider>
 );
 

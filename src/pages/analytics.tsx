@@ -4,13 +4,23 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Layout from "@/components/Layout";
 import { useWeather } from "@/hooks/useWeather";
 import heroFarm from "@/assets/hero-farm1.jpg";
+import { useLocation } from "../context/LocationContext";
+
 
 
 
 export default function Graphs() {
+  let city = "";
+
+try {
+  const location = useLocation();
+  city = location.city;
+} catch (e) {
+  console.log("LocationProvider missing");
+}
   const { forecast, loading } = useWeather();
   console.log(forecast);
-  const data = forecast.map((d) => ({
+  const data = (forecast || []).map((d) => ({
     day: d.day,
     "Max Temp": Math.round(d.temp_max),
     "Min Temp": Math.round(d.temp_min),
@@ -19,7 +29,7 @@ export default function Graphs() {
     Rainfall: d.rain ? Number(d.rain.toFixed(1)) : 0,
   }));
 
-  if (loading) {
+  if (loading || !forecast || forecast.length === 0) {
     return (
       <Layout>
         <div className="container mx-auto px-4 py-8 space-y-6">

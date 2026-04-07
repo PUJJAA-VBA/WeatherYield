@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -9,8 +9,20 @@ import { recommendCrops, getSeason } from "@/lib/crop-recommender";
 import { Sprout, Thermometer, Droplets, Calendar, Clock, Zap } from "lucide-react";
 import heroFarm from "@/assets/hero-farm2.jpg";
 
+import { useLocation } from "../context/LocationContext";
+
+
+
+
 export default function Recommendations() {
-  const { current, forecast, loading } = useWeather();
+  const { city } = useLocation();
+  const { current, forecast, loading, fetchWeatherByCity } = useWeather();
+  useEffect(() => {
+  if (city) {
+    fetchWeatherByCity(city);
+  }
+}, [city]);
+  
 
   const crops = useMemo(() => {
     if (!current || forecast.length === 0) return [];
@@ -180,3 +192,5 @@ export default function Recommendations() {
     </Layout>
   );
 }
+
+
