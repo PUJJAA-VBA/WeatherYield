@@ -13,7 +13,7 @@ export function useWeather() {
 
   const fetchWeatherByCity = async (city: string) => {
   if (!city) return;
-
+  setError(null); // ✅ clear old error
   setLoading(true);
   const apiKey = getApiKey();
   try {
@@ -39,6 +39,7 @@ export function useWeather() {
 
 setCurrent(c);
 setForecast(f);
+setError(null); // ✅ ensure error is cleared after success
 
   } catch (err) {
     setError("Error fetching weather");

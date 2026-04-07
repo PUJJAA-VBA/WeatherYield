@@ -125,7 +125,7 @@ const { IST, UTC } = getIndianTimes();
 
   <button
     onClick={() => fetchWeatherByCity(location)}
-    className="px-4 bg-green-600 text-white rounded-lg"
+    className="px-4 bg-neutral-900/70 backdrop-blur-lg border-b border-white/20 shadow-lg text-white rounded-lg"
   >
     Search
   </button>
