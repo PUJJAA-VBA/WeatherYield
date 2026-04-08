@@ -16,22 +16,20 @@ const {
   forecast,
   loading,
   error,
-  hasKey,
-  checkKey,
   fetchWeatherByCity,
   resetToCurrentLocation
 } = useWeather(city);
 
-  if (!hasKey) {
-    return (
-      <Layout
-      >
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <ApiKeyModal onSaved={checkKey} />
-        </div>
-      </Layout>
-    );
-  }
+  // if (!hasKey) {
+  //   return (
+  //     <Layout
+  //     >
+  //       <div className="flex items-center justify-center min-h-[60vh]">
+  //         <ApiKeyModal onSaved={checkKey} />
+  //       </div>
+  //     </Layout>
+  //   );
+  // }
 
   const formatTime = (ts: number) =>
     new Date(ts * 1000).toLocaleTimeString("en", {

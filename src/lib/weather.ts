@@ -1,12 +1,15 @@
-const API_KEY_STORAGE = "weatheryield_api_key";
+// const API_KEY_STORAGE = "weatheryield_api_key";
 
-export function getApiKey(): string | null {
-  return localStorage.getItem(API_KEY_STORAGE);
-}
+// export function getApiKey(): string | null {
+//   return localStorage.getItem(API_KEY_STORAGE);
+// }
 
-export function setApiKey(key: string) {
-  localStorage.setItem(API_KEY_STORAGE, key);
-}
+// export function setApiKey(key: string) {
+//   localStorage.setItem(API_KEY_STORAGE, key);
+// }
+
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+
 
 export interface CurrentWeather {
   temp: number;
@@ -37,13 +40,16 @@ export interface ForecastDay {
 }
 
 export async function fetchCurrentWeather(lat: number, lon: number): Promise<CurrentWeather> {
-  const key = getApiKey();
-  if (!key) throw new Error("API key not set");
+  if (!API_KEY) throw new Error("API key missing");
+
   const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=metric`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
   );
+
   if (!res.ok) throw new Error("Failed to fetch weather");
+
   const d = await res.json();
+
   return {
     temp: d.main.temp,
     feels_like: d.main.feels_like,
@@ -61,19 +67,24 @@ export async function fetchCurrentWeather(lat: number, lon: number): Promise<Cur
 }
 
 export async function fetchForecast(lat: number, lon: number): Promise<ForecastDay[]> {
-  const key = getApiKey();
-  if (!key) throw new Error("API key not set");
+  if (!API_KEY) throw new Error("API key missing");
+
   const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}&units=metric`
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
   );
+
   if (!res.ok) throw new Error("Failed to fetch forecast");
+
   const d = await res.json();
 
   const days = new Map<string, any>();
+
   for (const item of d.list) {
     const date = item.dt_txt.split(" ")[0];
+
     if (!days.has(date)) {
       const dt = new Date(date);
+
       days.set(date, {
         date,
         day: dt.toLocaleDateString("en", { weekday: "short" }),
@@ -84,7 +95,7 @@ export async function fetchForecast(lat: number, lon: number): Promise<ForecastD
         description: item.weather[0].description,
         icon: item.weather[0].icon,
         rain: item.rain?.["3h"] || 0,
-        pop: item.pop || 0, // ✅ ADD THIS LINE
+        pop: item.pop || 0,
       });
     } else {
       const existing = days.get(date)!;
