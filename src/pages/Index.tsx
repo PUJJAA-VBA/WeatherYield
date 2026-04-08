@@ -140,6 +140,9 @@ onChange={(e) => setCity(e.target.value)}
     localStorage.removeItem("city"); // ✅ CLEAR STORED CITY
     setCity("");
     resetToCurrentLocation(); // ✅ CLEAN RESET
+    if (!city.trim()) return;
+  localStorage.setItem("city", city); // ✅ save only when searching
+  fetchWeatherByCity(city);
   }}
   className="px-3 bg-gray-500 text-white rounded-lg"
 >

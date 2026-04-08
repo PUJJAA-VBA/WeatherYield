@@ -1,296 +1,300 @@
-import { useState } from "react";
-import { useRef, useEffect } from "react";
+// import { useState } from "react";
+// import { useRef, useEffect } from "react";
 
-export default function ChatBot() {
-  const [open, setOpen] = useState(false);
-  const chatRef = useRef<HTMLDivElement>(null);
-  const [input, setInput] = useState("");
-  const [editingId, setEditingId] = useState<number | null>(null);
-const [editText, setEditText] = useState("");
-  const [activeMenu, setActiveMenu] = useState<number | null>(null);
-  // 🧠 Current chat messages
-  const [messages, setMessages] = useState<any[]>([]);
-const [loading, setLoading] = useState(false);
-  // 🧠 All previous chats
-  const [history, setHistory] = useState<
-  { id: number; name: string; messages: any[] }[]
->([]);
+// export default function ChatBot() {
+//   const [open, setOpen] = useState(false);
+//   const chatRef = useRef<HTMLDivElement>(null);
+//   const [input, setInput] = useState("");
+//   const [editingId, setEditingId] = useState<number | null>(null);
+// const [editText, setEditText] = useState("");
+//   const [activeMenu, setActiveMenu] = useState<number | null>(null);
+//   // 🧠 Current chat messages
+//   const [messages, setMessages] = useState<any[]>([]);
+// const [loading, setLoading] = useState(false);
+//   // 🧠 All previous chats
+//   const [history, setHistory] = useState<
+//   { id: number; name: string; messages: any[] }[]
+// >([]);
 
- const handleSend = async () => {
-  if (!input) return;
+//  const handleSend = async () => {
+//   if (!input) return;
 
-  const userMsg = { type: "user", text: input };
-  setMessages((prev) => [...prev, userMsg]);
+//   const userMsg = { type: "user", text: input };
+//   setMessages((prev) => [...prev, userMsg]);
 
-  setLoading(true); // 🔥 START LOADING
+//   setLoading(true); // 🔥 START LOADING
 
-  try {
-    const res = await fetch("http://localhost:5000/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ message: input }),
-    });
+//   try {
+//     const res = await fetch("http://localhost:5000/chat", {
+//   method: "POST",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify({ message: input }),
+  
+// });
 
-    const data = await res.json();
 
-    const botReply = {
-      type: "bot",
-      text: data.reply,
-    };
+// if (!res.ok) throw new Error("Network error");
 
-    setMessages((prev) => [...prev, botReply]);
-  } catch {
-    setMessages((prev) => [
-      ...prev,
-      { type: "bot", text: "⚠️ Server error" },
-    ]);
-  }
+// const data = await res.json();
 
-  setLoading(false); // 🔥 STOP LOADING
-  setInput("");
-};
+//     const botReply = {
+//       type: "bot",
+//       text: data.reply,
+//     };
 
-  // ❌ CLOSE CHAT → SAVE HISTORY
-  const handleClose = () => {
-  if (messages.length > 0) {
-    const exists = history.some(
-      (chat) =>
-        JSON.stringify(chat.messages) === JSON.stringify(messages)
-    );
+//     setMessages((prev) => [...prev, botReply]);
+//   } catch {
+//     setMessages((prev) => [
+//       ...prev,
+//       { type: "bot", text: "⚠️ Server error" },
+//     ]);
+//   }
 
-    if (!exists) {
-      const newChat = {
-        id: Date.now(),
-        name: messages[0]?.text?.slice(0, 20) || "New Chat",
-        messages,
-      };
+//   setLoading(false); // 🔥 STOP LOADING
+//   setInput("");
+// };
 
-      setHistory((prev) => [newChat, ...prev]);
-    }
-  }
+//   // ❌ CLOSE CHAT → SAVE HISTORY
+//   const handleClose = () => {
+//   if (messages.length > 0) {
+//     const exists = history.some(
+//       (chat) =>
+//         JSON.stringify(chat.messages) === JSON.stringify(messages)
+//     );
 
-  setMessages([]);
-  setOpen(false);
-};
+//     if (!exists) {
+//       const newChat = {
+//         id: Date.now(),
+//         name: messages[0]?.text?.slice(0, 20) || "New Chat",
+//         messages,
+//       };
 
-useEffect(() => {
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      chatRef.current &&
-      !chatRef.current.contains(event.target as Node)
-    ) {
-      setOpen(false); // ✅ ONLY CLOSE UI
-    }
-  };
+//       setHistory((prev) => [newChat, ...prev]);
+//     }
+//   }
 
-  if (open) {
-    document.addEventListener("mousedown", handleClickOutside);
-  }
+//   setMessages([]);
+//   setOpen(false);
+// };
 
-  return () => {
-    document.removeEventListener("mousedown", handleClickOutside);
-  };
-}, [open]);
+// useEffect(() => {
+//   const handleClickOutside = (event: MouseEvent) => {
+//     if (
+//       chatRef.current &&
+//       !chatRef.current.contains(event.target as Node)
+//     ) {
+//       setOpen(false); // ✅ ONLY CLOSE UI
+//     }
+//   };
 
-const renameChat = (id: number) => {
-  const newName = prompt("Enter new chat name");
-  if (!newName) return;
+//   if (open) {
+//     document.addEventListener("mousedown", handleClickOutside);
+//   }
 
-  setHistory((prev) =>
-    prev.map((chat) =>
-      chat.id === id ? { ...chat, name: newName } : chat
-    )
-  );
-};
+//   return () => {
+//     document.removeEventListener("mousedown", handleClickOutside);
+//   };
+// }, [open]);
 
-const startRename = (chat: any) => {
-  setEditingId(chat.id);
-  setEditText(chat.name);
-};
+// const renameChat = (id: number) => {
+//   const newName = prompt("Enter new chat name");
+//   if (!newName) return;
 
-const saveRename = (id: number) => {
-  setHistory((prev) =>
-    prev.map((chat) =>
-      chat.id === id ? { ...chat, name: editText } : chat
-    )
-  );
-  setEditingId(null);
-};
+//   setHistory((prev) =>
+//     prev.map((chat) =>
+//       chat.id === id ? { ...chat, name: newName } : chat
+//     )
+//   );
+// };
 
-const deleteChat = (id: number) => {
-  setHistory((prev) => prev.filter((chat) => chat.id !== id));
-};
+// const startRename = (chat: any) => {
+//   setEditingId(chat.id);
+//   setEditText(chat.name);
+// };
 
-  const loadChat = (chat: any) => {
-  setMessages(chat.messages);
-};
+// const saveRename = (id: number) => {
+//   setHistory((prev) =>
+//     prev.map((chat) =>
+//       chat.id === id ? { ...chat, name: editText } : chat
+//     )
+//   );
+//   setEditingId(null);
+// };
 
-  const getBotReply = (text: string) => {
-    const q = text.toLowerCase();
+// const deleteChat = (id: number) => {
+//   setHistory((prev) => prev.filter((chat) => chat.id !== id));
+// };
 
-    if (q.includes("crop"))
-      return "You can choose crops based on weather and soil 🌱";
+//   const loadChat = (chat: any) => {
+//   setMessages(chat.messages);
+// };
 
-    if (q.includes("fertilizer"))
-      return "Use nitrogen-rich fertilizers for better growth 🌿";
+//   const getBotReply = (text: string) => {
+//     const q = text.toLowerCase();
 
-    if (q.includes("pest"))
-      return "Neem oil is a good eco-friendly pest control 🐛";
+//     if (q.includes("crop"))
+//       return "You can choose crops based on weather and soil 🌱";
 
-    if (q.includes("rain"))
-      return "Avoid irrigation if rain is expected 🌧️";
+//     if (q.includes("fertilizer"))
+//       return "Use nitrogen-rich fertilizers for better growth 🌿";
 
-    return "Ask me anything about agriculture 🌾";
-  };
+//     if (q.includes("pest"))
+//       return "Neem oil is a good eco-friendly pest control 🐛";
 
-  return (
-    <>
-      {/* 💬 Floating Button */}
-      <button
-        onClick={() => setOpen(true)}
-        className="fixed bottom-5 right-5 bg-green-600 text-white p-4 rounded-full shadow-lg"
-      >
-        💬
-      </button>
+//     if (q.includes("rain"))
+//       return "Avoid irrigation if rain is expected 🌧️";
 
-      {/* 💬 Chat Window */}
-      {open && (
-  <div
-    ref={chatRef}
-    className="fixed bottom-20 right-5 w-[400px] h-[450px] bg-white/30 backdrop-blur-lg border border-gray-300/30 rounded-xl shadow-lg flex"
-  >
+//     return "Ask me anything about agriculture 🌾";
+//   };
+
+//   return (
+//     <>
+//       {/* 💬 Floating Button */}
+//       <button
+//         onClick={() => setOpen(true)}
+//         className="fixed bottom-5 right-5 bg-green-600 text-white p-4 rounded-full shadow-lg"
+//       >
+//         💬
+//       </button>
+
+//       {/* 💬 Chat Window */}
+//       {open && (
+//   <div
+//     ref={chatRef}
+//     className="fixed bottom-20 right-5 w-[400px] h-[450px] bg-white/30 backdrop-blur-lg border border-gray-300/30 rounded-xl shadow-lg flex"
+//   >
           
-          {/* 🧠 LEFT SIDE → HISTORY */}
-          <div className="w-1/3 border-r border-black/30 p-2 overflow-y-auto">
-            <p className="text-xs font-bold mb-2 text-black">History</p>
+//           {/* 🧠 LEFT SIDE → HISTORY */}
+//           <div className="w-1/3 border-r border-black/30 p-2 overflow-y-auto">
+//             <p className="text-xs font-bold mb-2 text-black">History</p>
 
-            {history.length === 0 && (
-              <p className="text-xs text-gray-600">No chats</p>
-            )}
+//             {history.length === 0 && (
+//               <p className="text-xs text-gray-600">No chats</p>
+//             )}
 
-            {history.map((chat) => (
-  <div
-    key={chat.id}
-    onClick={() => loadChat(chat)}
-    className="p-2 mb-2 bg-white/40 rounded hover:bg-white/60 text-xs relative"
-  >
-    <div className="flex justify-between items-center">
-      {editingId === chat.id ? (
-  <input
-  value={editText}
-  autoFocus
-  onFocus={(e) => e.target.select()}
-  size={Math.max(editText.length, 5)} // ✅ minimum width
-  onChange={(e) => setEditText(e.target.value)}
-  onBlur={() => saveRename(chat.id)}
-  onKeyDown={(e) => {
-    if (e.key === "Enter") saveRename(chat.id);
-  }}
-  className="text-xs font-semibold bg-blue-500 text-white outline-none px-1 rounded"
-/>
-) : (
-  <span className="font-semibold">{chat.name}</span>
-)}
+//             {history.map((chat) => (
+//   <div
+//     key={chat.id}
+//     onClick={() => loadChat(chat)}
+//     className="p-2 mb-2 bg-white/40 rounded hover:bg-white/60 text-xs relative"
+//   >
+//     <div className="flex justify-between items-center">
+//       {editingId === chat.id ? (
+//   <input
+//   value={editText}
+//   autoFocus
+//   onFocus={(e) => e.target.select()}
+//   size={Math.max(editText.length, 5)} // ✅ minimum width
+//   onChange={(e) => setEditText(e.target.value)}
+//   onBlur={() => saveRename(chat.id)}
+//   onKeyDown={(e) => {
+//     if (e.key === "Enter") saveRename(chat.id);
+//   }}
+//   className="text-xs font-semibold bg-blue-500 text-white outline-none px-1 rounded"
+// />
+// ) : (
+//   <span className="font-semibold">{chat.name}</span>
+// )}
 
 
 
-      {/* ⋮ MENU BUTTON */}
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          setActiveMenu(activeMenu === chat.id ? null : chat.id);
-        }}
-        className="text-black text-lg"
-      >
-        ⋮
-      </button>
-    </div>
+//       {/* ⋮ MENU BUTTON */}
+//       <button
+//         onClick={(e) => {
+//           e.stopPropagation();
+//           setActiveMenu(activeMenu === chat.id ? null : chat.id);
+//         }}
+//         className="text-black text-lg"
+//       >
+//         ⋮
+//       </button>
+//     </div>
 
-    {/* DROPDOWN MENU */}
-    {activeMenu === chat.id && (
-      <div className="absolute right-2 mt-1 bg-white shadow-md rounded text-xs z-10">
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            startRename(chat);
-            setActiveMenu(null);
-          }}
-          className="rounded block px-3 py-1 hover:bg-gray-100 w-full text-left"
-        >
-           Rename
-        </button>
+//     {/* DROPDOWN MENU */}
+//     {activeMenu === chat.id && (
+//       <div className="absolute right-2 mt-1 bg-white shadow-md rounded text-xs z-10">
+//         <button
+//           onClick={(e) => {
+//             e.stopPropagation();
+//             startRename(chat);
+//             setActiveMenu(null);
+//           }}
+//           className="rounded block px-3 py-1 hover:bg-gray-100 w-full text-left"
+//         >
+//            Rename
+//         </button>
 
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            deleteChat(chat.id);
-            setActiveMenu(null);
-          }}
-          className="rounded block px-3 py-1 hover:bg-red-100 text-red-500 w-full text-left"
-        >
-           Delete
-        </button>
-      </div>
-    )}
-  </div>
-))}
-          </div>
+//         <button
+//           onClick={(e) => {
+//             e.stopPropagation();
+//             deleteChat(chat.id);
+//             setActiveMenu(null);
+//           }}
+//           className="rounded block px-3 py-1 hover:bg-red-100 text-red-500 w-full text-left"
+//         >
+//            Delete
+//         </button>
+//       </div>
+//     )}
+//   </div>
+// ))}
+//           </div>
 
-          {/* 🧠 RIGHT SIDE → CHAT */}
-          <div className="flex-1 flex flex-col">
+//           {/* 🧠 RIGHT SIDE → CHAT */}
+//           <div className="flex-1 flex flex-col">
 
-            {/* Header */}
-            <div className="p-3 bg-green-600 text-white rounded-tr-xl flex justify-between items-center">
-              <span className="font-bold">🌾 Agri Assistant</span>
+//             {/* Header */}
+//             <div className="p-3 bg-green-600 text-white rounded-tr-xl flex justify-between items-center">
+//               <span className="font-bold">🌾 Agri Assistant</span>
 
-              {/* ❌ CLOSE BUTTON */}
-              <button
-  onClick={handleClose}
-  className="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-red-500/70 text-white px-2 py-1 rounded-md transition"
->
-  ✖
-</button>
-            </div>
+//               {/* ❌ CLOSE BUTTON */}
+//               <button
+//   onClick={handleClose}
+//   className="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-red-500/70 text-white px-2 py-1 rounded-md transition"
+// >
+//   ✖
+// </button>
+//             </div>
 
-            {/* Messages */}
-            <div className="p-3 flex-1 overflow-y-auto space-y-2">
-              {messages.map((msg, i) => (
-                <div
-                  key={i}
-                  className={`p-2 rounded-lg text-sm ${
-                    msg.type === "user"
-                      ? "bg-green-200 text-right"
-                      : "bg-gray-200"
-                  }`}
-                >
-                  {msg.text}
-                </div>
-              ))}
-              {loading && <p className="text-xs">Typing...</p>}
-            </div>
+//             {/* Messages */}
+//             <div className="p-3 flex-1 overflow-y-auto space-y-2">
+//               {messages.map((msg, i) => (
+//                 <div
+//                   key={i}
+//                   className={`p-2 rounded-lg text-sm ${
+//                     msg.type === "user"
+//                       ? "bg-green-200 text-right"
+//                       : "bg-gray-200"
+//                   }`}
+//                 >
+//                   {msg.text}
+//                 </div>
+//               ))}
+//               {loading && <p className="text-xs">Typing...</p>}
+//             </div>
 
-            {/* Input */}
-            <div className="flex border-t border-black/30">
-              <input
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                placeholder="Ask something..."
-                className="placeholder:text-black/50 text-sm flex-1 p-2.5 bg-transparent outline-none"
-              />
-              <button
-                onClick={handleSend}
-                className="px-3 text-green-600 font-bold"
-              >
-                ➤
-              </button>
-            </div>
+//             {/* Input */}
+//             <div className="flex border-t border-black/30">
+//               <input
+//                 value={input}
+//                 onChange={(e) => setInput(e.target.value)}
+//                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
+//                 placeholder="Ask something..."
+//                 className="placeholder:text-black/50 text-sm flex-1 p-2.5 bg-transparent outline-none"
+//               />
+//               <button
+//                 onClick={handleSend}
+//                 className="px-3 text-green-600 font-bold"
+//               >
+//                 ➤
+//               </button>
+//             </div>
 
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
+//           </div>
+//         </div>
+//       )}
+//     </>
+//   );
+// }

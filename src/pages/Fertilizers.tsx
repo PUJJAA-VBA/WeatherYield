@@ -7,7 +7,7 @@ import heroFarm from "@/assets/hero-farm3.jpg";
 
 export default function Fertilizers() {
   const fertilizerData = [
-  { crop: "Rice", category: "Grains", fertilizer: "Urea", amount: "50 kg/acre", timing: "20–25 days", purpose: "Boosts leaf growth" },
+  { crop: "Rice (Paddy)", category: "Grains", fertilizer: "Urea", amount: "50 kg/acre", timing: "20–25 days", purpose: "Boosts leaf growth" },
   { crop: "Wheat", category: "Grains", fertilizer: "DAP", amount: "40 kg/acre", timing: "Before sowing", purpose: "Root development" },
   { crop: "Maize", category: "Grains", fertilizer: "NPK", amount: "60 kg/acre", timing: "Sowing + 30 days", purpose: "Balanced growth" },
 
@@ -121,7 +121,72 @@ export default function Fertilizers() {
 { crop: "Asparagus", category: "Vegetables", fertilizer: "Compost", amount: "40 kg/acre", timing: "Early stage", purpose: "Growth" },
 
 { crop: "Hemp", category: "Cash Crops", fertilizer: "NPK", amount: "40 kg/acre", timing: "Early stage", purpose: "Fiber yield" },
-{ crop: "Indigo", category: "Cash Crops", fertilizer: "Organic", amount: "30 kg/acre", timing: "Early stage", purpose: "Dye production" }
+{ crop: "Indigo", category: "Cash Crops", fertilizer: "Organic", amount: "30 kg/acre", timing: "Early stage", purpose: "Dye production" },
+
+// 🌸 Flowering Plants
+{ crop: "Rose", category: "Flowers", fertilizer: "NPK 10:10:10", amount: "20 kg/acre", timing: "Monthly", purpose: "Blooming" },
+{ crop: "Jasmine", category: "Flowers", fertilizer: "Urea + Compost", amount: "25 kg/acre", timing: "After pruning", purpose: "Flower yield" },
+{ crop: "Marigold", category: "Flowers", fertilizer: "NPK", amount: "20 kg/acre", timing: "Early stage", purpose: "Flower growth" },
+{ crop: "Sunflower (Ornamental)", category: "Flowers", fertilizer: "NPK", amount: "30 kg/acre", timing: "Early stage", purpose: "Flower size" },
+{ crop: "Lotus", category: "Flowers", fertilizer: "Organic", amount: "15 kg/acre", timing: "Monthly", purpose: "Blooming" },
+{ crop: "Hibiscus", category: "Flowers", fertilizer: "Potash", amount: "20 kg/acre", timing: "Flowering", purpose: "Flower quality" },
+{ crop: "Tulip", category: "Flowers", fertilizer: "NPK", amount: "25 kg/acre", timing: "Pre-planting", purpose: "Bulb growth" },
+{ crop: "Lily", category: "Flowers", fertilizer: "Compost", amount: "20 kg/acre", timing: "Early stage", purpose: "Flowering" },
+
+// 🍓 More Fruits
+{ crop: "Lychee", category: "Fruits", fertilizer: "NPK", amount: "40 kg/tree", timing: "Before flowering", purpose: "Fruit yield" },
+{ crop: "Jackfruit", category: "Fruits", fertilizer: "Organic + NPK", amount: "50 kg/tree", timing: "Yearly", purpose: "Fruit growth" },
+{ crop: "Custard Apple", category: "Fruits", fertilizer: "NPK", amount: "35 kg/tree", timing: "Flowering", purpose: "Fruit set" },
+{ crop: "Gooseberry", category: "Fruits", fertilizer: "Compost", amount: "30 kg/tree", timing: "Yearly", purpose: "Tree health" },
+{ crop: "Mulberry", category: "Fruits", fertilizer: "Urea", amount: "25 kg/acre", timing: "Early stage", purpose: "Leaf growth" },
+
+// 🌿 Herbs & Medicinal Plants
+{ crop: "Tulsi", category: "Medicinal", fertilizer: "Organic", amount: "15 kg/acre", timing: "Monthly", purpose: "Leaf growth" },
+{ crop: "Aloe Vera", category: "Medicinal", fertilizer: "Compost", amount: "20 kg/acre", timing: "Early stage", purpose: "Gel production" },
+{ crop: "Mint", category: "Medicinal", fertilizer: "Urea", amount: "20 kg/acre", timing: "Early stage", purpose: "Leaf growth" },
+{ crop: "Basil", category: "Medicinal", fertilizer: "Organic", amount: "15 kg/acre", timing: "Early stage", purpose: "Growth" },
+{ crop: "Ashwagandha", category: "Medicinal", fertilizer: "Compost", amount: "25 kg/acre", timing: "Early stage", purpose: "Root growth" },
+
+// 🌾 More Grains
+{ crop: "Foxtail Millet", category: "Grains", fertilizer: "NPK", amount: "30 kg/acre", timing: "Sowing", purpose: "Growth" },
+{ crop: "Little Millet", category: "Grains", fertilizer: "Urea", amount: "25 kg/acre", timing: "Early stage", purpose: "Yield" },
+{ crop: "Kodo Millet", category: "Grains", fertilizer: "NPK", amount: "30 kg/acre", timing: "Sowing", purpose: "Growth" },
+
+// 🥕 More Vegetables
+{ crop: "Okra", category: "Vegetables", fertilizer: "NPK", amount: "30 kg/acre", timing: "Flowering", purpose: "Yield" },
+{ crop: "Beans", category: "Vegetables", fertilizer: "DAP", amount: "25 kg/acre", timing: "Before sowing", purpose: "Root growth" },
+{ crop: "Peas (Green)", category: "Vegetables", fertilizer: "NPK", amount: "20 kg/acre", timing: "Early stage", purpose: "Growth" },
+{ crop: "Bottle Gourd", category: "Vegetables", fertilizer: "Compost", amount: "30 kg/acre", timing: "Early stage", purpose: "Growth" },
+{ crop: "Bitter Gourd", category: "Vegetables", fertilizer: "NPK", amount: "30 kg/acre", timing: "Flowering", purpose: "Fruit yield" },
+
+// 🌰 Dry Fruits / Nuts
+{ crop: "Walnut", category: "Fruits", fertilizer: "NPK", amount: "40 kg/tree", timing: "Spring", purpose: "Nut yield" },
+{ crop: "Pistachio", category: "Fruits", fertilizer: "Organic", amount: "30 kg/tree", timing: "Yearly", purpose: "Tree health" },
+
+// 🌱 Plantation / Trees
+{ crop: "Teak", category: "Plantation", fertilizer: "NPK", amount: "50 kg/acre", timing: "Yearly", purpose: "Wood growth" },
+{ crop: "Eucalyptus", category: "Plantation", fertilizer: "Urea", amount: "40 kg/acre", timing: "Early stage", purpose: "Growth" },
+
+// 🌶️ More Spices
+{ crop: "Fenugreek", category: "Spices", fertilizer: "DAP", amount: "20 kg/acre", timing: "Before sowing", purpose: "Growth" },
+{ crop: "Fennel", category: "Spices", fertilizer: "NPK", amount: "25 kg/acre", timing: "Early stage", purpose: "Yield" },
+{ crop: "Bay Leaf", category: "Spices", fertilizer: "Organic", amount: "20 kg/tree", timing: "Yearly", purpose: "Leaf production" },
+
+// 🌿 Fodder Crops
+{ crop: "Napier Grass", category: "Fodder", fertilizer: "Urea", amount: "50 kg/acre", timing: "After cutting", purpose: "Regrowth" },
+{ crop: "Lucerne", category: "Fodder", fertilizer: "NPK", amount: "40 kg/acre", timing: "Early stage", purpose: "Yield" },
+
+// 🌾 Pulses (extra)
+{ crop: "Cowpea", category: "Pulses", fertilizer: "Rhizobium", amount: "25 kg/acre", timing: "Before sowing", purpose: "Nitrogen fixation" },
+{ crop: "Field Bean", category: "Pulses", fertilizer: "DAP", amount: "30 kg/acre", timing: "Before sowing", purpose: "Root growth" },
+
+// 🌼 Ornamental Plants
+{ crop: "Orchid", category: "Flowers", fertilizer: "Liquid NPK", amount: "10 kg/acre", timing: "Weekly", purpose: "Blooming" },
+{ crop: "Bonsai", category: "Ornamental", fertilizer: "Organic", amount: "10 kg/acre", timing: "Monthly", purpose: "Growth" },
+
+// 🌴 Exotic / Special
+{ crop: "Date Palm", category: "Fruits", fertilizer: "NPK", amount: "50 kg/tree", timing: "Yearly", purpose: "Fruit yield" },
+{ crop: "Passion Fruit", category: "Fruits", fertilizer: "NPK", amount: "30 kg/acre", timing: "Flowering", purpose: "Fruit growth" },
 ];
 
   const [hasSearched, setHasSearched] = useState(false);

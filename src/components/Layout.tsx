@@ -4,7 +4,7 @@ import logo from "@/assets/logo.png";
 import heroFarm from "@/assets/hero-farm.jpg";
 import { FlaskConical } from "lucide-react";
 import { Bug } from "lucide-react"; // or use FlaskConical again if you want
-import ChatBot from "@/components/ChatBot";
+// import ChatBot from "@/components/ChatBot";
 
 const navItems = [
   { path: "/", label: "Dashboard", icon: Home },
@@ -59,7 +59,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </header>
       <main className="flex-1 flex-col min-h-screen">{children}</main>
-      <ChatBot />
+      {/* <ChatBot /> */}
       <footer className="bg-neutral-900/50 backdrop-blur-lg border-b border-white/20 shadow-lg border-t border-white/20 bg-neutral-900/80 backdrop-blur-md py-4 text-center text-sm text-white">
         <div className="container mx-auto px-4 flex items-center justify-center gap-2">
           <Cloud className="w-4 h-4" />

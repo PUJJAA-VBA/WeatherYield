@@ -10,7 +10,7 @@ export default function Pesticides() {
   const pesticideData = [
     {
   disease: "Bacterial Panicle Blight",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "Discolored grains, empty seeds",
   severity: "High",
   pesticide: "Streptomycin",
@@ -20,7 +20,7 @@ export default function Pesticides() {
 },
 {
   disease: "Rice Hispa",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "Scraped leaves, white streaks",
   severity: "Medium",
   pesticide: "Chlorpyrifos",
@@ -30,7 +30,7 @@ export default function Pesticides() {
 },
 {
   disease: "Rice Caseworm",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "Cut leaves floating on water",
   severity: "Medium",
   pesticide: "Cartap Hydrochloride",
@@ -40,7 +40,7 @@ export default function Pesticides() {
 },
 {
   disease: "Rice Leaf Folder",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "Folded leaves, eaten tissues",
   severity: "High",
   pesticide: "Chlorantraniliprole",
@@ -50,7 +50,7 @@ export default function Pesticides() {
 },
 {
   disease: "Rice Earhead Bug",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "Empty grains, bug presence",
   severity: "High",
   pesticide: "Malathion",
@@ -60,7 +60,7 @@ export default function Pesticides() {
 },
 {
   disease: "Rice Whorl Maggot",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "White streaks on leaves",
   severity: "Medium",
   pesticide: "Carbofuran",
@@ -70,7 +70,7 @@ export default function Pesticides() {
 },
 {
   disease: "Rice Tungro Bacilliform",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "Yellow-orange leaves",
   severity: "High",
   pesticide: "Imidacloprid",
@@ -80,7 +80,7 @@ export default function Pesticides() {
 },
 {
   disease: "Rice Sheath Rot",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "Rotting sheath, poor grain filling",
   severity: "High",
   pesticide: "Carbendazim",
@@ -159,6 +159,356 @@ export default function Pesticides() {
   purpose: "Nutrient correction"
 },
 {
+  disease: "Rose Black Spot",
+  crops: ["Rose"],
+  symptoms: "Black spots on leaves",
+  severity: "Medium",
+  pesticide: "Chlorothalonil",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Jasmine Bud Worm",
+  crops: ["Jasmine"],
+  symptoms: "Damaged flower buds",
+  severity: "High",
+  pesticide: "Spinosad",
+  amount: "0.3 ml/L",
+  timing: "Bud stage",
+  purpose: "Larvae control"
+},
+{
+  disease: "Marigold Leaf Spot",
+  crops: ["Marigold"],
+  symptoms: "Brown spots",
+  severity: "Medium",
+  pesticide: "Mancozeb",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Hibiscus Mealybug",
+  crops: ["Hibiscus"],
+  symptoms: "White cotton insects",
+  severity: "Medium",
+  pesticide: "Neem Oil",
+  amount: "3 ml/L",
+  timing: "Early stage",
+  purpose: "Eco pest control"
+},
+{
+  disease: "Sunflower Head Borer",
+  crops: ["Sunflower"],
+  symptoms: "Damaged flower head",
+  severity: "High",
+  pesticide: "Indoxacarb",
+  amount: "1 ml/L",
+  timing: "Flowering",
+  purpose: "Controls larvae"
+},
+{
+  disease: "Grape Downy Mildew",
+  crops: ["Grapes"],
+  symptoms: "Yellow patches",
+  severity: "High",
+  pesticide: "Metalaxyl",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Grape Powdery Mildew",
+  crops: ["Grapes"],
+  symptoms: "White powder",
+  severity: "Medium",
+  pesticide: "Sulfur",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Stops fungal spread"
+},
+{
+  disease: "Apple Codling Moth",
+  crops: ["Apple"],
+  symptoms: "Holes in fruits",
+  severity: "High",
+  pesticide: "Spinosad",
+  amount: "0.3 ml/L",
+  timing: "Fruit stage",
+  purpose: "Larvae control"
+},
+{
+  disease: "Apple Fire Blight",
+  crops: ["Apple"],
+  symptoms: "Burnt appearance",
+  severity: "High",
+  pesticide: "Streptomycin",
+  amount: "0.5 g/L",
+  timing: "Early stage",
+  purpose: "Bacterial control"
+},
+{
+  disease: "Mango Fruit Fly",
+  crops: ["Mango"],
+  symptoms: "Damaged fruits",
+  severity: "High",
+  pesticide: "Malathion",
+  amount: "2 ml/L",
+  timing: "Fruit stage",
+  purpose: "Insect control"
+},
+{
+  disease: "Mango Powdery Mildew",
+  crops: ["Mango"],
+  symptoms: "White coating",
+  severity: "Medium",
+  pesticide: "Sulfur",
+  amount: "2 g/L",
+  timing: "Flowering",
+  purpose: "Fungal control"
+},
+{
+  disease: "Papaya Leaf Curl",
+  crops: ["Papaya"],
+  symptoms: "Curled leaves",
+  severity: "High",
+  pesticide: "Imidacloprid",
+  amount: "0.3 ml/L",
+  timing: "Early stage",
+  purpose: "Vector control"
+},
+{
+  disease: "Guava Fruit Fly",
+  crops: ["Guava"],
+  symptoms: "Rotting fruits",
+  severity: "High",
+  pesticide: "Malathion",
+  amount: "2 ml/L",
+  timing: "Fruit stage",
+  purpose: "Insect control"
+},
+{
+  disease: "Pomegranate Wilt",
+  crops: ["Pomegranate"],
+  symptoms: "Sudden wilting",
+  severity: "High",
+  pesticide: "Carbendazim",
+  amount: "1 g/L",
+  timing: "Soil treatment",
+  purpose: "Fungal control"
+},
+{
+  disease: "Watermelon Fusarium Wilt",
+  crops: ["Watermelon"],
+  symptoms: "Wilting vines",
+  severity: "High",
+  pesticide: "Carbendazim",
+  amount: "1 g/L",
+  timing: "Soil stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Muskmelon Aphids",
+  crops: ["Muskmelon"],
+  symptoms: "Sticky leaves",
+  severity: "Medium",
+  pesticide: "Neem Oil",
+  amount: "3 ml/L",
+  timing: "Early stage",
+  purpose: "Pest control"
+},
+{
+  disease: "Coconut Rhinoceros Beetle",
+  crops: ["Coconut"],
+  symptoms: "Holes in leaves",
+  severity: "High",
+  pesticide: "Chlorpyrifos",
+  amount: "2 ml/L",
+  timing: "Early stage",
+  purpose: "Beetle control"
+},
+{
+  disease: "Arecanut Yellow Leaf",
+  crops: ["Arecanut"],
+  symptoms: "Yellow leaves",
+  severity: "Medium",
+  pesticide: "Micronutrient Spray",
+  amount: "As required",
+  timing: "Early stage",
+  purpose: "Nutrient correction"
+},
+{
+  disease: "Coffee Leaf Rust",
+  crops: ["Coffee"],
+  symptoms: "Orange spots",
+  severity: "High",
+  pesticide: "Copper fungicide",
+  amount: "3 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Tea Blister Blight",
+  crops: ["Tea"],
+  symptoms: "Blisters on leaves",
+  severity: "High",
+  pesticide: "Copper fungicide",
+  amount: "3 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Turmeric Leaf Blotch",
+  crops: ["Turmeric"],
+  symptoms: "Brown spots",
+  severity: "Medium",
+  pesticide: "Mancozeb",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Ginger Soft Rot",
+  crops: ["Ginger"],
+  symptoms: "Rotting rhizomes",
+  severity: "High",
+  pesticide: "Metalaxyl",
+  amount: "2 g/L",
+  timing: "Soil treatment",
+  purpose: "Fungal control"
+},
+{
+  disease: "Pepper Wilt",
+  crops: ["Black Pepper"],
+  symptoms: "Wilting vines",
+  severity: "High",
+  pesticide: "Carbendazim",
+  amount: "1 g/L",
+  timing: "Soil treatment",
+  purpose: "Fungal control"
+},
+{
+  disease: "Cardamom Thrips",
+  crops: ["Cardamom"],
+  symptoms: "Silvery leaves",
+  severity: "Medium",
+  pesticide: "Fipronil",
+  amount: "1 ml/L",
+  timing: "Early stage",
+  purpose: "Insect control"
+},
+{
+  disease: "Vanilla Stem Rot",
+  crops: ["Vanilla"],
+  symptoms: "Rotting stem",
+  severity: "High",
+  pesticide: "Carbendazim",
+  amount: "1 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Saffron Corm Rot",
+  crops: ["Saffron"],
+  symptoms: "Rotting corm",
+  severity: "High",
+  pesticide: "Thiram",
+  amount: "2 g/kg",
+  timing: "Before planting",
+  purpose: "Seed treatment"
+},
+{
+  disease: "Kiwi Bacterial Canker",
+  crops: ["Kiwi"],
+  symptoms: "Lesions on stems",
+  severity: "High",
+  pesticide: "Copper fungicide",
+  amount: "3 g/L",
+  timing: "Early stage",
+  purpose: "Bacterial control"
+},
+{
+  disease: "Avocado Root Rot",
+  crops: ["Avocado"],
+  symptoms: "Root decay",
+  severity: "High",
+  pesticide: "Metalaxyl",
+  amount: "2 g/L",
+  timing: "Soil stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Fig Rust",
+  crops: ["Fig"],
+  symptoms: "Rust spots",
+  severity: "Medium",
+  pesticide: "Propiconazole",
+  amount: "1 ml/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Strawberry Grey Mold",
+  crops: ["Strawberry"],
+  symptoms: "Grey fungus",
+  severity: "High",
+  pesticide: "Captan",
+  amount: "2 g/L",
+  timing: "Flowering",
+  purpose: "Fungal control"
+},
+{
+  disease: "Blueberry Mummy Berry",
+  crops: ["Blueberry"],
+  symptoms: "Shriveled fruits",
+  severity: "Medium",
+  pesticide: "Chlorothalonil",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Cherry Leaf Spot",
+  crops: ["Cherry"],
+  symptoms: "Purple spots",
+  severity: "Medium",
+  pesticide: "Mancozeb",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Zucchini Powdery Mildew",
+  crops: ["Zucchini"],
+  symptoms: "White powder",
+  severity: "Medium",
+  pesticide: "Sulfur",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Asparagus Rust",
+  crops: ["Asparagus"],
+  symptoms: "Orange spores",
+  severity: "Medium",
+  pesticide: "Propiconazole",
+  amount: "1 ml/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Lettuce Aphids",
+  crops: ["Lettuce"],
+  symptoms: "Sticky leaves",
+  severity: "Low",
+  pesticide: "Neem Oil",
+  amount: "3 ml/L",
+  timing: "Early stage",
+  purpose: "Eco pest control"
+},
+{
   disease: "Groundnut Rust",
   crops: ["Groundnut"],
   symptoms: "Brown pustules",
@@ -170,7 +520,7 @@ export default function Pesticides() {
 },
 {
   disease: "Minor Leaf Spot",
-  crops: ["Rice", "Wheat"],
+  crops: ["Rice (Paddy)", "Wheat"],
   symptoms: "Small scattered spots",
   severity: "Low",
   pesticide: "Neem Oil",
@@ -200,7 +550,7 @@ export default function Pesticides() {
 },
 {
   disease: "Leaf Yellowing (Nutrient)",
-  crops: ["Banana", "Rice"],
+  crops: ["Banana", "Rice (Paddy)"],
   symptoms: "Slight yellow leaves",
   severity: "Low",
   pesticide: "Micronutrient Spray",
@@ -269,6 +619,366 @@ export default function Pesticides() {
   purpose: "Pest control"
 },
 {
+  disease: "Rose Black Spot",
+  crops: ["Rose"],
+  symptoms: "Black spots on leaves",
+  severity: "Medium",
+  pesticide: "Chlorothalonil",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Jasmine Bud Worm",
+  crops: ["Jasmine"],
+  symptoms: "Damaged flower buds",
+  severity: "High",
+  pesticide: "Spinosad",
+  amount: "0.3 ml/L",
+  timing: "Flowering stage",
+  purpose: "Controls larvae"
+},
+{
+  disease: "Hibiscus Aphids",
+  crops: ["Hibiscus"],
+  symptoms: "Sticky leaves",
+  severity: "Medium",
+  pesticide: "Neem Oil",
+  amount: "3 ml/L",
+  timing: "Early stage",
+  purpose: "Eco pest control"
+},
+{
+  disease: "Marigold Leaf Spot",
+  crops: ["Marigold"],
+  symptoms: "Brown leaf spots",
+  severity: "Low",
+  pesticide: "Mancozeb",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Orchid Root Rot",
+  crops: ["Orchid"],
+  symptoms: "Soft black roots",
+  severity: "High",
+  pesticide: "Metalaxyl",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Root protection"
+},
+{
+  disease: "Lily Botrytis Blight",
+  crops: ["Lily"],
+  symptoms: "Brown lesions",
+  severity: "High",
+  pesticide: "Carbendazim",
+  amount: "1 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Sunflower Aphids",
+  crops: ["Sunflower"],
+  symptoms: "Clustered insects",
+  severity: "Medium",
+  pesticide: "Imidacloprid",
+  amount: "0.3 ml/L",
+  timing: "Early stage",
+  purpose: "Pest control"
+},
+{
+  disease: "Grape Powdery Mildew",
+  crops: ["Grapes"],
+  symptoms: "White powder",
+  severity: "High",
+  pesticide: "Sulfur",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Grape Mealybug",
+  crops: ["Grapes"],
+  symptoms: "White cotton insects",
+  severity: "Medium",
+  pesticide: "Neem Oil",
+  amount: "2 ml/L",
+  timing: "Early stage",
+  purpose: "Eco control"
+},
+{
+  disease: "Apple Fire Blight",
+  crops: ["Apple"],
+  symptoms: "Burnt appearance",
+  severity: "High",
+  pesticide: "Streptomycin",
+  amount: "500 g/acre",
+  timing: "Flowering stage",
+  purpose: "Bacterial control"
+},
+{
+  disease: "Guava Fruit Fly",
+  crops: ["Guava"],
+  symptoms: "Maggots in fruit",
+  severity: "High",
+  pesticide: "Malathion",
+  amount: "2 ml/L",
+  timing: "Fruit stage",
+  purpose: "Fly control"
+},
+{
+  disease: "Pomegranate Wilt",
+  crops: ["Pomegranate"],
+  symptoms: "Wilting plants",
+  severity: "High",
+  pesticide: "Carbendazim",
+  amount: "1 g/L",
+  timing: "Soil treatment",
+  purpose: "Fungal control"
+},
+{
+  disease: "Watermelon Fusarium Wilt",
+  crops: ["Watermelon"],
+  symptoms: "Yellowing vines",
+  severity: "High",
+  pesticide: "Carbendazim",
+  amount: "1 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Muskmelon Downy Mildew",
+  crops: ["Muskmelon"],
+  symptoms: "Yellow patches",
+  severity: "Medium",
+  pesticide: "Metalaxyl",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Sapota Leaf Spot",
+  crops: ["Sapota"],
+  symptoms: "Brown patches",
+  severity: "Low",
+  pesticide: "Mancozeb",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Coconut Rhinoceros Beetle",
+  crops: ["Coconut"],
+  symptoms: "Damaged leaves",
+  severity: "High",
+  pesticide: "Chlorpyrifos",
+  amount: "2 ml/L",
+  timing: "Early stage",
+  purpose: "Beetle control"
+},
+{
+  disease: "Arecanut Yellow Leaf",
+  crops: ["Arecanut"],
+  symptoms: "Yellowing leaves",
+  severity: "Medium",
+  pesticide: "Micronutrient Spray",
+  amount: "As required",
+  timing: "Early stage",
+  purpose: "Nutrient correction"
+},
+{
+  disease: "Pepper Quick Wilt",
+  crops: ["Black Pepper"],
+  symptoms: "Sudden wilting",
+  severity: "High",
+  pesticide: "Metalaxyl",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Cardamom Thrips",
+  crops: ["Cardamom"],
+  symptoms: "Silvery streaks",
+  severity: "Medium",
+  pesticide: "Fipronil",
+  amount: "1 ml/L",
+  timing: "Early stage",
+  purpose: "Insect control"
+},
+{
+  disease: "Clove Leaf Spot",
+  crops: ["Clove"],
+  symptoms: "Dark spots",
+  severity: "Low",
+  pesticide: "Copper fungicide",
+  amount: "3 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Coriander Aphids",
+  crops: ["Coriander"],
+  symptoms: "Sticky leaves",
+  severity: "Medium",
+  pesticide: "Neem Oil",
+  amount: "2 ml/L",
+  timing: "Early stage",
+  purpose: "Eco control"
+},
+{
+  disease: "Cumin Blight",
+  crops: ["Cumin"],
+  symptoms: "Leaf drying",
+  severity: "High",
+  pesticide: "Carbendazim",
+  amount: "1 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Strawberry Grey Mold",
+  crops: ["Strawberry"],
+  symptoms: "Grey fuzzy mold",
+  severity: "High",
+  pesticide: "Captan",
+  amount: "2 g/L",
+  timing: "Flowering stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Blueberry Rust",
+  crops: ["Blueberry"],
+  symptoms: "Orange spots",
+  severity: "Medium",
+  pesticide: "Tebuconazole",
+  amount: "1 ml/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Cherry Leaf Spot",
+  crops: ["Cherry"],
+  symptoms: "Small purple spots",
+  severity: "Medium",
+  pesticide: "Mancozeb",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Avocado Root Rot",
+  crops: ["Avocado"],
+  symptoms: "Wilting tree",
+  severity: "High",
+  pesticide: "Metalaxyl",
+  amount: "2 g/L",
+  timing: "Soil treatment",
+  purpose: "Root protection"
+},
+{
+  disease: "Fig Mosaic Virus",
+  crops: ["Fig"],
+  symptoms: "Mottled leaves",
+  severity: "Medium",
+  pesticide: "Neem Oil",
+  amount: "3 ml/L",
+  timing: "Early stage",
+  purpose: "Vector control"
+},
+{
+  disease: "Zucchini Powdery Mildew",
+  crops: ["Zucchini"],
+  symptoms: "White powder",
+  severity: "High",
+  pesticide: "Sulfur",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Asparagus Beetle",
+  crops: ["Asparagus"],
+  symptoms: "Chewed leaves",
+  severity: "Medium",
+  pesticide: "Spinosad",
+  amount: "0.3 ml/L",
+  timing: "Early stage",
+  purpose: "Insect control"
+},
+{
+  disease: "Bamboo Scale Insects",
+  crops: ["Bamboo"],
+  symptoms: "Sticky leaves",
+  severity: "Medium",
+  pesticide: "Neem Oil",
+  amount: "2 ml/L",
+  timing: "Early stage",
+  purpose: "Eco pest control"
+},
+{
+  disease: "Olive Fruit Fly",
+  crops: ["Olive"],
+  symptoms: "Damaged fruits",
+  severity: "High",
+  pesticide: "Malathion",
+  amount: "2 ml/L",
+  timing: "Fruit stage",
+  purpose: "Fly control"
+},
+{
+  disease: "Vanilla Stem Rot",
+  crops: ["Vanilla"],
+  symptoms: "Rotting stems",
+  severity: "High",
+  pesticide: "Carbendazim",
+  amount: "1 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Saffron Corm Rot",
+  crops: ["Saffron"],
+  symptoms: "Rotten bulbs",
+  severity: "High",
+  pesticide: "Thiram",
+  amount: "2 g/kg",
+  timing: "Before planting",
+  purpose: "Fungal prevention"
+},
+{
+  disease: "Quinoa Downy Mildew",
+  crops: ["Quinoa"],
+  symptoms: "Yellow patches",
+  severity: "Medium",
+  pesticide: "Metalaxyl",
+  amount: "2 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Dragon Fruit Stem Rot",
+  crops: ["Dragon Fruit"],
+  symptoms: "Soft stems",
+  severity: "High",
+  pesticide: "Copper fungicide",
+  amount: "3 g/L",
+  timing: "Early stage",
+  purpose: "Fungal control"
+},
+{
+  disease: "Kiwi Bacterial Canker",
+  crops: ["Kiwi"],
+  symptoms: "Lesions on stems",
+  severity: "High",
+  pesticide: "Copper fungicide",
+  amount: "3 g/L",
+  timing: "Early stage",
+  purpose: "Bacterial control"
+},
+{
   disease: "Pea Powdery Mildew",
   crops: ["Pea"],
   symptoms: "White powder",
@@ -300,7 +1010,7 @@ export default function Pesticides() {
 },
     {
       disease: "Leaf Spot",
-      crops: ["Rice", "Wheat", "Maize"],
+      crops: ["Rice (Paddy)", "Wheat", "Maize"],
       symptoms: "Brown spots on leaves",
       severity: "Medium",
       pesticide: "Mancozeb",
@@ -370,7 +1080,7 @@ export default function Pesticides() {
     },
     {
       disease: "Bacterial Leaf Blight",
-      crops: ["Rice"],
+      crops: ["Rice (Paddy)"],
       symptoms: "Yellowing leaves",
       severity: "High",
       pesticide: "Streptomycin",
@@ -400,7 +1110,7 @@ export default function Pesticides() {
 },
 {
   disease: "Stem Borer",
-  crops: ["Rice", "Maize"],
+  crops: ["Rice (Paddy)", "Maize"],
   symptoms: "Dead heart in plants",
   severity: "High",
   pesticide: "Chlorpyrifos",
@@ -470,7 +1180,7 @@ export default function Pesticides() {
 },
 {
   disease: "Blast",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "Diamond-shaped spots",
   severity: "High",
   pesticide: "Tricyclazole",
@@ -510,7 +1220,7 @@ export default function Pesticides() {
 },
 {
   disease: "Gall Midge",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "Silver shoot",
   severity: "High",
   pesticide: "Carbofuran",
@@ -558,7 +1268,7 @@ export default function Pesticides() {
 },
 {
   disease: "Armyworm",
-  crops: ["Maize", "Rice"],
+  crops: ["Maize", "Rice (Paddy)"],
   symptoms: "Leaves eaten rapidly",
   severity: "High",
   pesticide: "Chlorantraniliprole",
@@ -585,7 +1295,7 @@ export default function Pesticides() {
 },
 {
   disease: "Leaf Hopper",
-  crops: ["Rice", "Cotton"],
+  crops: ["Rice (Paddy)", "Cotton"],
   symptoms: "Yellowing and drying leaves",
   severity: "Medium",
   pesticide: "Buprofezin",
@@ -630,7 +1340,7 @@ export default function Pesticides() {
 },
 {
   disease: "Brown Planthopper",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "Yellowing and drying patches, hopper insects",
   severity: "High",
   pesticide: "Imidacloprid",
@@ -640,7 +1350,7 @@ export default function Pesticides() {
 },
 {
   disease: "Sheath Blight",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "Oval lesions on leaf sheath",
   severity: "High",
   pesticide: "Validamycin",
@@ -650,7 +1360,7 @@ export default function Pesticides() {
 },
 {
   disease: "False Smut",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "Green balls on grains",
   severity: "Medium",
   pesticide: "Propiconazole",
@@ -660,7 +1370,7 @@ export default function Pesticides() {
 },
 {
   disease: "Stem Rot",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "Black lesions at stem base",
   severity: "High",
   pesticide: "Carbendazim",
@@ -670,7 +1380,7 @@ export default function Pesticides() {
 },
 {
   disease: "Tungro Virus",
-  crops: ["Rice"],
+  crops: ["Rice (Paddy)"],
   symptoms: "Yellow-orange leaves, stunted growth",
   severity: "High",
   pesticide: "Imidacloprid",
