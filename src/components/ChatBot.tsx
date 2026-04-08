@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useRef, useEffect } from "react";
 
 export default function ChatBot() {
   const [open, setOpen] = useState(false);
-
+  const chatRef = useRef<HTMLDivElement>(null);
   const [input, setInput] = useState("");
-
+  const [editingId, setEditingId] = useState<number | null>(null);
+const [editText, setEditText] = useState("");
   const [activeMenu, setActiveMenu] = useState<number | null>(null);
   // 🧠 Current chat messages
   const [messages, setMessages] = useState<any[]>([]);
@@ -73,6 +75,25 @@ const [loading, setLoading] = useState(false);
   setOpen(false);
 };
 
+useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      chatRef.current &&
+      !chatRef.current.contains(event.target as Node)
+    ) {
+      setOpen(false); // ✅ ONLY CLOSE UI
+    }
+  };
+
+  if (open) {
+    document.addEventListener("mousedown", handleClickOutside);
+  }
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, [open]);
+
 const renameChat = (id: number) => {
   const newName = prompt("Enter new chat name");
   if (!newName) return;
@@ -82,6 +103,20 @@ const renameChat = (id: number) => {
       chat.id === id ? { ...chat, name: newName } : chat
     )
   );
+};
+
+const startRename = (chat: any) => {
+  setEditingId(chat.id);
+  setEditText(chat.name);
+};
+
+const saveRename = (id: number) => {
+  setHistory((prev) =>
+    prev.map((chat) =>
+      chat.id === id ? { ...chat, name: editText } : chat
+    )
+  );
+  setEditingId(null);
 };
 
 const deleteChat = (id: number) => {
@@ -122,10 +157,13 @@ const deleteChat = (id: number) => {
 
       {/* 💬 Chat Window */}
       {open && (
-        <div className="fixed bottom-20 right-5 w-[400px] h-[450px] bg-white/30 backdrop-blur-lg border border-gray-300/30 rounded-xl shadow-lg flex">
+  <div
+    ref={chatRef}
+    className="fixed bottom-20 right-5 w-[400px] h-[450px] bg-white/30 backdrop-blur-lg border border-gray-300/30 rounded-xl shadow-lg flex"
+  >
           
           {/* 🧠 LEFT SIDE → HISTORY */}
-          <div className="w-1/3 border-r border-gray-300/30 p-2 overflow-y-auto">
+          <div className="w-1/3 border-r border-black/30 p-2 overflow-y-auto">
             <p className="text-xs font-bold mb-2 text-black">History</p>
 
             {history.length === 0 && (
@@ -139,7 +177,24 @@ const deleteChat = (id: number) => {
     className="p-2 mb-2 bg-white/40 rounded hover:bg-white/60 text-xs relative"
   >
     <div className="flex justify-between items-center">
-      <span className="font-semibold">{chat.name}</span>
+      {editingId === chat.id ? (
+  <input
+  value={editText}
+  autoFocus
+  onFocus={(e) => e.target.select()}
+  size={Math.max(editText.length, 5)} // ✅ minimum width
+  onChange={(e) => setEditText(e.target.value)}
+  onBlur={() => saveRename(chat.id)}
+  onKeyDown={(e) => {
+    if (e.key === "Enter") saveRename(chat.id);
+  }}
+  className="text-xs font-semibold bg-blue-500 text-white outline-none px-1 rounded"
+/>
+) : (
+  <span className="font-semibold">{chat.name}</span>
+)}
+
+
 
       {/* ⋮ MENU BUTTON */}
       <button
@@ -159,12 +214,12 @@ const deleteChat = (id: number) => {
         <button
           onClick={(e) => {
             e.stopPropagation();
-            renameChat(chat.id);
+            startRename(chat);
             setActiveMenu(null);
           }}
-          className="block px-3 py-1 hover:bg-gray-100 w-full text-left"
+          className="rounded block px-3 py-1 hover:bg-gray-100 w-full text-left"
         >
-          ✏ Rename
+           Rename
         </button>
 
         <button
@@ -173,9 +228,9 @@ const deleteChat = (id: number) => {
             deleteChat(chat.id);
             setActiveMenu(null);
           }}
-          className="block px-3 py-1 hover:bg-red-100 text-red-500 w-full text-left"
+          className="rounded block px-3 py-1 hover:bg-red-100 text-red-500 w-full text-left"
         >
-          🗑 Delete
+           Delete
         </button>
       </div>
     )}
@@ -213,16 +268,17 @@ const deleteChat = (id: number) => {
                   {msg.text}
                 </div>
               ))}
+              {loading && <p className="text-xs">Typing...</p>}
             </div>
 
             {/* Input */}
-            <div className="flex border-t border-gray-300/30">
+            <div className="flex border-t border-black/30">
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
                 placeholder="Ask something..."
-                className="placeholder:text-black/40 flex-1 p-2 bg-transparent outline-none"
+                className="placeholder:text-black/50 text-sm flex-1 p-2.5 bg-transparent outline-none"
               />
               <button
                 onClick={handleSend}

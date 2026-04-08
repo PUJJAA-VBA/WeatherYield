@@ -42,6 +42,8 @@ export function useWeather(city?: string) {
   setLoading(false);
 };
 
+
+
 useEffect(() => {
   if (city) {
     fetchWeatherByCity(city);

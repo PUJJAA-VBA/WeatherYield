@@ -137,6 +137,7 @@ onChange={(e) => setCity(e.target.value)}
 
 <button
   onClick={() => {
+    localStorage.removeItem("city"); // ✅ CLEAR STORED CITY
     setCity("");
     resetToCurrentLocation(); // ✅ CLEAN RESET
   }}
@@ -147,6 +148,7 @@ onChange={(e) => setCity(e.target.value)}
   <button
     onClick={() => {
   if (!city.trim()) return;
+  localStorage.setItem("city", city); // ✅ save only when searching
   fetchWeatherByCity(city);
 }}
     className="px-4 bg-neutral-900/70 backdrop-blur-lg border-b border-white/20 shadow-lg text-white rounded-lg"
