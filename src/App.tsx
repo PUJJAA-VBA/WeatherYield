@@ -11,13 +11,14 @@ import Fertilizers from "./pages/Fertilizers";
 import Pesticides from "./pages/Pesticides";
 import DiseaseScanner from "./pages/DiseaseScanner";
 import { LocationProvider } from "./context/LocationContext";
+import { HashRouter } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <LocationProvider>
-    <BrowserRouter> 
+    <HashRouter>
     <TooltipProvider>
       <Toaster />
       <Sonner />
@@ -31,7 +32,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
     </TooltipProvider>
-    </BrowserRouter>
+    </HashRouter>
     </LocationProvider>
   </QueryClientProvider>
 );
