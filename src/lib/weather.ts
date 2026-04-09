@@ -1,13 +1,3 @@
-// const API_KEY_STORAGE = "weatheryield_api_key";
-
-// export function getApiKey(): string | null {
-//   return localStorage.getItem(API_KEY_STORAGE);
-// }
-
-// export function setApiKey(key: string) {
-//   localStorage.setItem(API_KEY_STORAGE, key);
-// }
-
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
 
