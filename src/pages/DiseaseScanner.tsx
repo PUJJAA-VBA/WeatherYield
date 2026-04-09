@@ -64,7 +64,8 @@ const [deviceId, setDeviceId] = useState<string | undefined>(undefined);
   setCapturedImage(null);
   setResult([]);
   setLoading(false);
-  setFileName(""); // ✅ reset
+  setFileName("");
+  setError(""); // ✅ ADD THIS LINE
 };
 
   const handleDetect = async () => {
@@ -164,7 +165,7 @@ useEffect(() => {
             </button>
           )}
           {error && (
-  <p className="text-white text-lg">{error}</p>
+  <p className="text-red-600 text-Medium">{error}</p>
 )}
 
           {/* 📂 UPLOAD (HIDDEN AFTER CAPTURE) */}
