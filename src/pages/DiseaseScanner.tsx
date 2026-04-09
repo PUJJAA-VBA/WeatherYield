@@ -164,7 +164,7 @@ useEffect(() => {
             </button>
           )}
           {error && (
-  <p className="text-red-600 text-Medium">{error}</p>
+  <p className="text-white text-lg">{error}</p>
 )}
 
           {/* 📂 UPLOAD (HIDDEN AFTER CAPTURE) */}
