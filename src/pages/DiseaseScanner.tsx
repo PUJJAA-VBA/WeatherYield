@@ -13,6 +13,28 @@ export default function DiseaseScanner() {
   const [loading, setLoading] = useState(false);
   const webcamRef = useRef<any>(null);
   const [fileName, setFileName] = useState("");
+  const [error, setError] = useState("");
+
+  const isPlantImage = (img: string | File | null) => {
+  if (!img) return false;
+
+  // Simple heuristic (for now)
+  // Later you can replace with ML API (PlantNet / TensorFlow)
+
+  // Check file name (for uploads)
+  if (typeof img !== "string") {
+    const name = img.name.toLowerCase();
+    return (
+      name.includes("leaf") ||
+      name.includes("plant") ||
+      name.includes("crop") ||
+      name.includes("tree")
+    );
+  }
+
+  // For webcam images → assume unknown → allow detection
+  return true;
+};
 
   const handleClear = () => {
   setImage(null);
@@ -23,18 +45,28 @@ export default function DiseaseScanner() {
 };
 
   const handleDetect = () => {
-    if (!image && !capturedImage) return;
+  if (!image && !capturedImage) return;
 
-    setLoading(true);
+  // ✅ CHECK IF PLANT IMAGE
+  const valid = isPlantImage(image || capturedImage);
 
-    const random =
-      pesticideData[Math.floor(Math.random() * pesticideData.length)];
+  if (!valid) {
+    setResult([]);
+    setError("❌ Please upload a valid plant image");
+    return;
+  }
 
-    setTimeout(() => {
-      setResult([random]);
-      setLoading(false);
-    }, 1500);
-  };
+  setLoading(true);
+  setError("");
+
+  const random =
+    pesticideData[Math.floor(Math.random() * pesticideData.length)];
+
+  setTimeout(() => {
+    setResult([random]);
+    setLoading(false);
+  }, 1500);
+};
 
   return (
     <Layout>
@@ -70,10 +102,13 @@ export default function DiseaseScanner() {
               />
             ) : (
               <Webcam
-                ref={webcamRef}
-                screenshotFormat="image/jpeg"
-                className="w-full h-full object-cover"
-              />
+  ref={webcamRef}
+  screenshotFormat="image/jpeg"
+  videoConstraints={{
+    facingMode: "environment"  // ✅ BACK CAMERA
+  }}
+  className="w-full h-full object-cover"
+/>
             )}
           </div>
 
@@ -90,6 +125,9 @@ export default function DiseaseScanner() {
               📸 Capture
             </button>
           )}
+          {error && (
+  <p className="text-red-600 text-sm">{error}</p>
+)}
 
           {/* 📂 UPLOAD (HIDDEN AFTER CAPTURE) */}
           {!capturedImage && !fileName && (
