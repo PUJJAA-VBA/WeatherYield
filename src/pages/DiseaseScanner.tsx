@@ -9,7 +9,7 @@ import heroFarm from "@/assets/hero-farm5.jpg";
 export default function DiseaseScanner() {
   const [image, setImage] = useState<File | null>(null);
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
-  const [result, setResult] = useState<any[]>([]);
+  
   const [loading, setLoading] = useState(false);
   const webcamRef = useRef<any>(null);
   const [fileName, setFileName] = useState("");
@@ -17,6 +17,18 @@ export default function DiseaseScanner() {
   const [devices, setDevices] = useState<MediaDeviceInfo[]>([]);
 const [deviceId, setDeviceId] = useState<string | undefined>(undefined);
 const [facingMode, setFacingMode] = useState<"user" | "environment">("environment");
+
+
+type Prediction = {
+  class: string;
+  confidence: number;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
+const [result, setResult] = useState<Prediction[]>([]);
 
   const isPlantImage = (img: string | File | null): Promise<boolean> => {
   return new Promise((resolve) => {
@@ -78,6 +90,7 @@ const [facingMode, setFacingMode] = useState<"user" | "environment">("environmen
 
   setLoading(true);
   setError("");
+  setResult([]);
 
   try {
     const file = image
@@ -97,16 +110,18 @@ const [facingMode, setFacingMode] = useState<"user" | "environment">("environmen
 
     const data = await response.json();
 
-    if (!data.predictions || data.predictions.length === 0) {
-      setError("❌ No disease detected");
-      setResult([]);
+    console.log("API RESPONSE:", data); // 🔥 DEBUG
+
+    if (!data || !data.predictions || data.predictions.length === 0) {
+      setError("❌ No disease detected. Try a clearer plant image.");
       return;
     }
 
     setResult(data.predictions);
 
   } catch (err) {
-    setError("⚠️ Detection failed");
+    console.error(err);
+    setError("⚠️ Detection failed. Try again.");
   } finally {
     setLoading(false);
   }
@@ -251,6 +266,7 @@ useEffect(() => {
 
             <button
               onClick={handleDetect}
+              
               disabled={loading || (!image && !capturedImage)}
               className={`px-4 py-2 rounded-lg text-white ${
                 image || capturedImage
@@ -286,32 +302,28 @@ useEffect(() => {
 
         {/* RESULT CARD */}
         {result.length > 0 && (
-          <Card className="mt-6 w-full max-w-md shadow-lg">
-            <CardContent className="p-5 space-y-3">
+  <Card className="mt-6 w-full max-w-md shadow-lg">
+    <CardContent className="p-5 space-y-3">
 
-              <h2 className="font-bold text-lg text-green-700">
-  🦠 {result[0].class}
-</h2>
+      <h2 className="font-bold text-lg text-green-700">
+        🦠 {result[0].class}
+      </h2>
 
-<p><b>Confidence:</b> {(result[0].confidence * 100).toFixed(2)}%</p>
+      <p>
+        <b>Confidence:</b> {(result[0].confidence * 100).toFixed(2)}%
+      </p>
 
-              <p><b>🌾 Crops:</b> {result[0].crops.join(", ")}</p>
-              <p><b>⚠️ Severity:</b> {result[0].severity}</p>
-              <p><b>⏰ Stage:</b> {result[0].timing}</p>
-              <p><b>🧬 Symptoms:</b> {result[0].symptoms}</p>
+      <p>
+        <b>Bounding Box:</b> ({Math.round(result[0].x)}, {Math.round(result[0].y)})
+      </p>
 
-              <div className="bg-green-50 p-3 rounded-lg border">
-                <p><b>🧪 Solution:</b> {result[0].pesticide}</p>
-                <p><b>📦 Amount:</b> {result[0].amount}</p>
-              </div>
+      <p className="text-xs text-yellow-600">
+        ⚠️ AI prediction based on image
+      </p>
 
-              <p className="text-xs text-yellow-600">
-                ⚠️ AI suggestion only. Verify before use.
-              </p>
-
-            </CardContent>
-          </Card>
-        )}
+    </CardContent>
+  </Card>
+)}
         </div>
       </div>
     </Layout>
