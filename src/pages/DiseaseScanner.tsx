@@ -18,21 +18,12 @@ export default function DiseaseScanner() {
   const isPlantImage = (img: string | File | null) => {
   if (!img) return false;
 
-  // Simple heuristic (for now)
-  // Later you can replace with ML API (PlantNet / TensorFlow)
-
-  // Check file name (for uploads)
+  // ✅ Allow ALL uploaded files (temporary fix)
   if (typeof img !== "string") {
-    const name = img.name.toLowerCase();
-    return (
-      name.includes("leaf") ||
-      name.includes("plant") ||
-      name.includes("crop") ||
-      name.includes("tree")
-    );
+    return true;
   }
 
-  // For webcam images → assume unknown → allow detection
+  // Webcam image
   return true;
 };
 
@@ -105,8 +96,8 @@ export default function DiseaseScanner() {
   ref={webcamRef}
   screenshotFormat="image/jpeg"
   videoConstraints={{
-    facingMode: { exact: "environment" } // ✅ BACK CAMERA
-  }}
+  facingMode: "environment"
+}}
   className="w-full h-full object-cover"
 />
             )}
@@ -125,9 +116,9 @@ export default function DiseaseScanner() {
               📸 Capture
             </button>
           )}
-          {/* {error && (
+          {error && (
   <p className="text-red-600 text-sm">{error}</p>
-)} */}
+)}
 
           {/* 📂 UPLOAD (HIDDEN AFTER CAPTURE) */}
           {!capturedImage && !fileName && (
@@ -139,8 +130,9 @@ export default function DiseaseScanner() {
   const file = e.target.files?.[0];
   setImage(file || null);
   setCapturedImage(null);
+  setError(""); // ✅ CLEAR ERROR
 
-  if (file) setFileName(file.name); // ✅ store file name
+  if (file) setFileName(file.name);
 }}
             
             className="bg-white/30 backdrop-blur-md border border-white/20 shadow-lg rounded p-2 flex flex-col items-center "
