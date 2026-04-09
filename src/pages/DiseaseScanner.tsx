@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Camera } from "lucide-react";
-import { pesticideData } from "@/data/pesticideData";
+// import { pesticideData } from "@/data/pesticideData";
 import Webcam from "react-webcam";
 import heroFarm from "@/assets/hero-farm5.jpg";
 
@@ -73,31 +73,42 @@ const [facingMode, setFacingMode] = useState<"user" | "environment">("environmen
 };
 
   const handleDetect = async () => {
-  if (loading) return; // ✅ STOP multiple clicks
-
+  if (loading) return;
   if (!image && !capturedImage) return;
 
   setLoading(true);
   setError("");
 
   try {
-    const valid = await isPlantImage(image || capturedImage);
+    const file = image
+      ? image
+      : await fetch(capturedImage!).then(res => res.blob());
 
-    if (!valid) {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch(
+      "https://detect.roboflow.com/plant-disease-detection/1?api_key=rf_qqCFmePR67RQm2RsNyTW94jjjYn2",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+
+    if (!data.predictions || data.predictions.length === 0) {
+      setError("❌ No disease detected");
       setResult([]);
-      setError("❌ No plant detected. Please capture a plant image.");
       return;
     }
 
-    const random =
-      pesticideData[Math.floor(Math.random() * pesticideData.length)];
-
-    setResult([random]); // ✅ SET RESULT DIRECTLY
+    setResult(data.predictions);
 
   } catch (err) {
-    setError("⚠️ Detection failed. Try again.");
+    setError("⚠️ Detection failed");
   } finally {
-    setLoading(false); // ✅ ALWAYS RESET
+    setLoading(false);
   }
 };
 
@@ -146,14 +157,33 @@ useEffect(() => {
           <div className="w-72 h-72 border-2 border-dashed rounded-xl overflow-hidden flex items-center justify-center bg-gray-100">
 
             {capturedImage || image ? (
-              <img
-                src={
-                  capturedImage
-                    ? capturedImage
-                    : URL.createObjectURL(image as File)
-                }
-                className="w-full h-full object-cover"
-              />
+              <div className="relative w-72 h-72">
+  <img
+    src={
+      capturedImage
+        ? capturedImage
+        : URL.createObjectURL(image as File)
+    }
+    className="w-full h-full object-cover"
+  />
+
+  {result.map((pred, i) => (
+    <div
+      key={i}
+      className="absolute border-2 border-red-500"
+      style={{
+        left: `${pred.x - pred.width / 2}px`,
+        top: `${pred.y - pred.height / 2}px`,
+        width: `${pred.width}px`,
+        height: `${pred.height}px`,
+      }}
+    >
+      <span className="bg-red-500 text-white text-xs px-1">
+        {pred.class}
+      </span>
+    </div>
+  ))}
+</div>
             ) : (
               <Webcam
   ref={webcamRef}
@@ -260,8 +290,10 @@ useEffect(() => {
             <CardContent className="p-5 space-y-3">
 
               <h2 className="font-bold text-lg text-green-700">
-                🦠 {result[0].disease}
-              </h2>
+  🦠 {result[0].class}
+</h2>
+
+<p><b>Confidence:</b> {(result[0].confidence * 100).toFixed(2)}%</p>
 
               <p><b>🌾 Crops:</b> {result[0].crops.join(", ")}</p>
               <p><b>⚠️ Severity:</b> {result[0].severity}</p>
