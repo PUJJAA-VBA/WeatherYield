@@ -105,7 +105,7 @@ export default function DiseaseScanner() {
   ref={webcamRef}
   screenshotFormat="image/jpeg"
   videoConstraints={{
-    facingMode: "environment"  // ✅ BACK CAMERA
+    facingMode: { exact: "environment" } // ✅ BACK CAMERA
   }}
   className="w-full h-full object-cover"
 />
@@ -125,9 +125,9 @@ export default function DiseaseScanner() {
               📸 Capture
             </button>
           )}
-          {error && (
+          {/* {error && (
   <p className="text-red-600 text-sm">{error}</p>
-)}
+)} */}
 
           {/* 📂 UPLOAD (HIDDEN AFTER CAPTURE) */}
           {!capturedImage && !fileName && (
